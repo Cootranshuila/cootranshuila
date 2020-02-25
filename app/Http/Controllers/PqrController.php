@@ -6,10 +6,6 @@ use Illuminate\Http\Request;
 
 class PqrController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware(['permission:pqr|universal']);
-    }
     
     public function index()
     {

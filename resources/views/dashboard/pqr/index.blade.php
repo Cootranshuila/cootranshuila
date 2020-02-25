@@ -67,7 +67,7 @@
                                             </div>
 
                                             <div class="card-footer text-center">
-                                                <a href="#">Ver Correos</a>
+                                                <a href="{{ route('pqr-correos') }}">Ver Correos</a>
                                             </div>
                                         </div>
                                     </div>
@@ -86,7 +86,7 @@
                                             </div>
 
                                             <div class="card-footer text-center">
-                                                <a href="#">Ver Reclamos</a>
+                                                <a href="{{ route('pqr-correos') }}">Ver Reclamos</a>
                                             </div>
                                         </div>
                                     </div>
@@ -105,7 +105,7 @@
                                             </div>
 
                                             <div class="card-footer text-center">
-                                                <a href="#">Ver Sugerencias</a>
+                                                <a href="{{ route('pqr-correos') }}">Ver Sugerencias</a>
                                             </div>
                                         </div>
                                     </div>
@@ -125,7 +125,7 @@
                                             </div>
 
                                             <div class="card-footer text-center">
-                                                <a href="#">Ver Quejas</a>
+                                                <a href="{{ route('pqr-correos') }}">Ver Quejas</a>
                                             </div>
                                         </div>
                                     </div>
@@ -144,7 +144,7 @@
                                             </div>
 
                                             <div class="card-footer text-center">
-                                                <a href="#">Ver Felicitaciones</a>
+                                                <a href="{{ route('pqr-correos') }}">Ver Felicitaciones</a>
                                             </div>
                                         </div>
                                     </div>
@@ -163,7 +163,7 @@
                                             </div>
 
                                             <div class="card-footer text-center">
-                                                <a href="#">Ver Contestados</a>
+                                                <a href="{{ route('pqr-correos') }}">Ver Contestados</a>
                                             </div>
                                         </div>
                                     </div>

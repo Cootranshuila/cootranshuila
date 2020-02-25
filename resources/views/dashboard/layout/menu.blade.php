@@ -89,31 +89,31 @@
                 <!-- MENU del PQR -->
                 @routeIs('pqr')
                     <li>
-                        <a href="{{ route('pqr') }}" class=" waves-effect">
+                        <a href="{{ route('pqr-correos') }}" class=" waves-effect">
                             <div class="d-inline-block icons-sm mr-2"><i class="fa fa-envelope"></i></div>
                             <span> Correos</span>
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('pqr') }}" class=" waves-effect">
+                        <a href="{{ route('pqr-reclamos') }}" class=" waves-effect">
                             <div class="d-inline-block icons-sm mr-2"><i class="fas fa-exclamation-triangle"></i></div>
                             <span> Reclamos</span>
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('pqr') }}" class=" waves-effect">
+                        <a href="{{ route('pqr-sugerencias') }}" class=" waves-effect">
                             <div class="d-inline-block icons-sm mr-2"><i class="fa fa-briefcase"></i></div>
                             <span> Sugerencias</span>
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('pqr') }}" class=" waves-effect">
+                        <a href="{{ route('pqr-quejas') }}" class=" waves-effect">
                             <div class="d-inline-block icons-sm mr-2"><i class="fas fa-clipboard-list"></i></div>
                             <span> Quejas</span>
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('pqr') }}" class=" waves-effect">
+                        <a href="{{ route('pqr-felicitaciones') }}" class=" waves-effect">
                             <div class="d-inline-block icons-sm mr-2"><i class="fa fa-laugh-beam"></i></div>
                             <span> Felicitaciones</span>
                         </a>
@@ -122,7 +122,7 @@
                     <li class="menu-title">Otros</li>
 
                     <li>
-                        <a href="{{ route('pqr') }}" class=" waves-effect">
+                        <a href="{{ route('pqr-contestados') }}" class=" waves-effect">
                             <div class="d-inline-block icons-sm mr-2"><i class="fa fa-envelope-open-text"></i></div>
                             <span> Contestados</span>
                         </a>
