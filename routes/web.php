@@ -32,7 +32,11 @@ Route::group(['middleware' => ['auth.admin']], function () {
 
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
-    Route::get('/dashboard/pqr', 'PqrController@index')->name('pqr');
+    //Grupo de Rutas para el modulo de PQR
+    Route::group(['middleware' => ['permission:pqr|universal']], function () {
+        Route::get('/dashboard/pqr', 'PqrController@index')->name('pqr');
+    });
+
     Route::get('/dashboard/especial', 'EspecialController@index')->name('especial');
     Route::get('/dashboard/sanciones', 'SancionesController@index')->name('sanciones');
     Route::get('/dashboard/modemygps', 'ModemgpsController@index')->name('modemygps');
