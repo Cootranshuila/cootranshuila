@@ -51,8 +51,122 @@
                     <div class="col-xl-12">
                         <div class="card">
                             <div class="card-body">
-                                <div class="row">
-                                    
+                                <div class="row p-5">
+                                    <div class="col-lg-4">
+                                        <div class="card border shadow-none">
+                                            <div class="card-body">
+                                                <div class="media">
+                                                    <div class="icons-md mr-3">
+                                                        <i class="uim uim-layer-group"></i>
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <h5 class="mb-1">Correos</h5>
+                                                        <p class="text-muted"># Correos sin contestar</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="card-footer text-center">
+                                                <a href="#">Ver Correos</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="card border shadow-none">
+                                            <div class="card-body">
+                                                <div class="media">
+                                                    <div class="icons-md mr-3">
+                                                        <i class="uim uim-lock"></i>
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <h5 class="mb-1">Reclamos</h5>
+                                                        <p class="text-muted"># Reclamos sin contestar</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="card-footer text-center">
+                                                <a href="#">Ver Reclamos</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="card border shadow-none">
+                                            <div class="card-body">
+                                                <div class="media">
+                                                    <div class="icons-md mr-3">
+                                                        <i class="uim uim-briefcase"></i>
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <h5 class="mb-1">Sugerencias</h5>
+                                                        <p class="text-muted"># Sugerencias sin contestar</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="card-footer text-center">
+                                                <a href="#">Ver Sugerencias</a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-4">
+                                        <div class="card border shadow-none">
+                                            <div class="card-body">
+                                                <div class="media">
+                                                    <div class="icons-md mr-3">
+                                                        <i class="uim uim-document-layout-left"></i>
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <h5 class="mb-1">Quejas</h5>
+                                                        <p class="text-muted"># Quejas sin contestar</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="card-footer text-center">
+                                                <a href="#">Ver Quejas</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="card border shadow-none">
+                                            <div class="card-body">
+                                                <div class="media">
+                                                    <div class="icons-md mr-3">
+                                                        <i class="uim uim-favorite"></i>
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <h5 class="mb-1">Felicitaciones</h5>
+                                                        <p class="text-muted"># Felicitaciones nuevas</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="card-footer text-center">
+                                                <a href="#">Ver Felicitaciones</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="card border shadow-none">
+                                            <div class="card-body">
+                                                <div class="media">
+                                                    <div class="icons-md mr-3">
+                                                        <i class="uim uim-sync-exclamation"></i>
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <h5 class="mb-1">Contestados</h5>
+                                                        <p class="text-muted">Ver todos los procesos contestados</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="card-footer text-center">
+                                                <a href="#">Ver Contestados</a>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
