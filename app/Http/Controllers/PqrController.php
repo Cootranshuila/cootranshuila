@@ -8,7 +8,7 @@ class PqrController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['role:admin','permission:universal']);
+        $this->middleware(['permission:pqr|universal']);
     }
     
     public function index()

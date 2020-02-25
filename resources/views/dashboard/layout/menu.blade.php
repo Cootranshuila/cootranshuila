@@ -17,14 +17,17 @@
 
                 <li class="menu-title">
                     @routeIs('dashboard') Aplicaciones @else Aplicacion:  @endif
-                        {{-- @routeIs('prq') PQR  @endif
+                    <i>
+                        @routeIs('pqr') PQR  @endif
                         @routeIs('especial') Servicio Especial  @endif
                         @routeIs('sanciones') Operativos y Sanciones  @endif
                         @routeIs('modemygps') Modem y GPS  @endif
                         @routeIs('postulados') Postulados  @endif
-                        @routeIs('turismo') Turismo  @endif --}}
+                        @routeIs('turismo') Turismo  @endif
+                    </i> 
                 </li>
 
+                <!-- MENU del Index del Dashboard -->
                 @routeIs('dashboard')
 
                     @canany(['pqr', 'universal'])
@@ -81,6 +84,40 @@
                         </li>
                     @endcanany
 
+                @endif
+
+                <!-- MENU del PQR -->
+                @routeIs('pqr')
+                    <li>
+                        <a href="{{ route('pqr') }}" class=" waves-effect">
+                            <div class="d-inline-block icons-sm mr-2"><i class="fas fa-envelope"></i></div>
+                            <span> Correos</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('pqr') }}" class=" waves-effect">
+                            <div class="d-inline-block icons-sm mr-2"><i class="fas fa-envelope"></i></div>
+                            <span> Reclamos</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('pqr') }}" class=" waves-effect">
+                            <div class="d-inline-block icons-sm mr-2"><i class="fas fa-envelope"></i></div>
+                            <span> Sugerencias</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('pqr') }}" class=" waves-effect">
+                            <div class="d-inline-block icons-sm mr-2"><i class="fas fa-envelope"></i></div>
+                            <span> Quejas</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('pqr') }}" class=" waves-effect">
+                            <div class="d-inline-block icons-sm mr-2"><i class="fas fa-envelope"></i></div>
+                            <span> Felicitaciones</span>
+                        </a>
+                    </li>
                 @endif
 
             </ul>
