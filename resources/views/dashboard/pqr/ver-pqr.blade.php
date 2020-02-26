@@ -73,7 +73,7 @@
                                             </tbody>
                                         </table>
                                     </div>
-
+                                    {{ $correo }}
                                 </div>
                             </div>
                         </div>
