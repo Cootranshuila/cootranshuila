@@ -19,6 +19,12 @@ class PqrCorreosController extends Controller
         $correo = Correo::findOrFail($id);
         return view('dashboard.pqr.ver-pqr', ['correo' => $correo]);
     }
+
+    public function reclamos()
+    {
+        $reclamos = Correo::paginate(10);
+        return view('dashboard.pqr.reclamos', ['reclamos' => $reclamos]);
+    }
     
     public function create()
     {
