@@ -10,7 +10,7 @@ class PqrCorreosController extends Controller
 
     public function index()
     {
-        $correos = Correo::all();
+        $correos = Correo::paginate(10);
         return view('dashboard.pqr.correos', ['correos' => $correos]);
     }
 

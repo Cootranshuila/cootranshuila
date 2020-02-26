@@ -55,7 +55,7 @@
 
                                     <h5 class="header-title mb-4">Correos enviados desde la pagina web.</h5>
 
-                                    <div class="table-responsive">
+                                    <div class="table-responsive mb-3">
                                         <table class="table table-centered table-hover table-bordered mb-0">
                                             <thead>
                                                 <tr>
@@ -93,6 +93,8 @@
                                             </tbody>
                                         </table>
                                     </div>
+
+                                    {{ $correos->links() }}
 
                                 </div>
                             </div>
