@@ -14,6 +14,12 @@ class PqrCorreosController extends Controller
         return view('dashboard.pqr.correos', ['correos' => $correos]);
     }
 
+    public function reclamos()
+    {
+        $reclamos = Correo::paginate(10);
+        return view('dashboard.pqr.reclamos', ['reclamos' => $reclamos]);
+    }
+
     
     public function create()
     {

@@ -86,7 +86,7 @@
                                             </div>
 
                                             <div class="card-footer text-center">
-                                                <a href="{{ route('pqr-correos') }}">Ver Reclamos</a>
+                                                <a href="{{route('pqr-reclamos') }}">Ver Reclamos</a>
                                             </div>
                                         </div>
                                     </div>
