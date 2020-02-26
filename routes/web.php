@@ -42,7 +42,7 @@ Route::group(['middleware' => ['auth.admin']], function () {
         Route::get('/dashboard/pqr/felicitaciones', 'PqrController@index')->name('pqr-felicitaciones');
         Route::get('/dashboard/pqr/contestados', 'PqrController@index')->name('pqr-contestados');
 
-        Route::get('/dashboard/pqr/{$id}/ver-pqr', 'PqrController@index')->name('ver_pqr');
+        Route::get('/dashboard/pqr/{id}/ver-pqr', 'PqrCorreosController@verPqr')->name('ver-pqr');
     });
 
     Route::group(['middleware'=>['permission:servicio-especial|universal']],function(){

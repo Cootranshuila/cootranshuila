@@ -14,6 +14,11 @@ class PqrCorreosController extends Controller
         return view('dashboard.pqr.correos', ['correos' => $correos]);
     }
 
+    public function verPqr($id)
+    {
+        $correo = Correo::findOrFail($id);
+        return view('dashboard.pqr.ver-pqr', ['correo' => $correo]);
+    }
     
     public function create()
     {

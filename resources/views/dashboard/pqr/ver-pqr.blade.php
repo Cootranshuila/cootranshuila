@@ -1,6 +1,6 @@
 @extends('dashboard.layout.app')
 
-@section('title') Correos @endsection
+@section('title') Correo #{{ request('id') }} @endsection
 
 <div id="layout-wrapper">
 
@@ -53,7 +53,7 @@
                             <div class="card-body">
                                 <div class="row p-5">
 
-                                    <h5 class="header-title mb-4">Correos enviados desde la pagina web.</h5>
+                                    <h5 class="header-title mb-4">Correo #{{ request('id') }}</h5>
 
                                     <div class="table-responsive mb-3">
                                         <table class="table table-centered table-hover table-bordered mb-0">
@@ -70,31 +70,9 @@
                                             </thead>
                                             <tbody>
 
-                                                @foreach ($correos as $correo)
-                                                    <tr>
-                                                        <th scope="row">
-                                                            <a href="#">{{ $correo->num_correo }}</a>
-                                                        </th>
-                                                        <td>{{ Str::limit($correo->nombre_usu, 15) }}</td>
-                                                        <td>{{ $correo->telefono_usu }}</td>
-                                                        <td>{{ Str::limit($correo->correo_usu, 20) }}</td>
-                                                        <td>{{ Str::limit($correo->mensaje_usu, 60) }}</td>
-                                                        <td>{{ $correo->fecha_correo }}</td>
-                                                        <td class="text-center">
-                                                            <a href="{{ route('ver-pqr', $correo->num_correo) }}">
-                                                                <button type="button" class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="Ver Correo">
-                                                                    <i class="mdi mdi-eye"></i>
-                                                                </button>
-                                                            </a>
-                                                        </td>
-                                                    </tr>
-                                                @endforeach
-
                                             </tbody>
                                         </table>
                                     </div>
-
-                                    {{ $correos->links() }}
 
                                 </div>
                             </div>
