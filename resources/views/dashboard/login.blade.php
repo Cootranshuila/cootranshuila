@@ -22,7 +22,7 @@
                         <div class="card-body p-4">
                             <div class="p-2">
                                 <h5 class="mb-5 text-center">Ingresa con tu cuenta.</h5>
-                                <form class="form-horizontal" method="POST" action="{{ route('login') }}">
+                                <form class="form-horizontal" method="POST" action="{{route('login') }}">
                                     @csrf
 
                                     <div class="row">
@@ -55,7 +55,7 @@
                                                 <button class="btn btn-primary btn-block waves-effect waves-light" type="submit">Ingresar</button>
                                             </div>
                                             <div class="mt-5 text-center">
-                                                <h6 class="text-muted">Cootrahsuila @ 2020</h6>
+                                                <h6 class="text-muted">CootransHuila @ 2020</h6>
                                             </div>
                                         </div>
                                     </div>

@@ -20,7 +20,7 @@
                     <div class="col-md-8">
                         <h4 class="page-title mb-1">Dashboard</h4>
                         <ol class="breadcrumb m-0">
-                        <li class="breadcrumb-item active">Panel de Administrador</li>
+                        <li class="breadcrumb-item active">Panel del Administrador</li>
                         </ol>
                     </div>
                     {{-- <div class="col-md-4">
