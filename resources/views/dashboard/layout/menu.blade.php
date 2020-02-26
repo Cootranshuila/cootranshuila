@@ -6,7 +6,7 @@
         <div id="sidebar-menu">
             <!-- Left Menu Start -->
             <ul class="metismenu list-unstyled" id="side-menu">
-                <li class="menu-title">Menu</li>
+                <li class="menu-title">Menú</li>
 
                 <li>
                     <a href="{{ route('dashboard') }}" class="waves-effect">
@@ -128,6 +128,24 @@
                         </a>
                     </li>
                 @endif
+
+                <!--Menú de servicio especial-->
+
+                @routeIs('especial')
+                    <li>
+                        <a href="" class=" waves-effect">
+                            <div class="d-inline-block icons-sm mr-2"><i class="fa fa-envelope-open-text"></i></div>
+                            <span> Contratos</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" class=" waves-effect">
+                            <div class="d-inline-block icons-sm mr-2"><i class="fa fa-envelope-open-text"></i></div>
+                            <span>Crear nuevo contrato</span>
+                        </a>
+                    </li>
+                @endif
+
 
             </ul>
 

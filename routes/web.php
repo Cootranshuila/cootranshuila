@@ -43,7 +43,10 @@ Route::group(['middleware' => ['auth.admin']], function () {
         Route::get('/dashboard/pqr/contestados', 'PqrController@index')->name('pqr-contestados');
     });
 
-    Route::get('/dashboard/especial', 'EspecialController@index')->name('especial');
+    Route::group(['middleware'=>['permission:servicio-especial|universal']],function(){
+        Route::get('/dashboard/especial', 'EspecialController@index')->name('especial');
+    });
+    
     Route::get('/dashboard/sanciones', 'SancionesController@index')->name('sanciones');
     Route::get('/dashboard/modemygps', 'ModemgpsController@index')->name('modemygps');
     Route::get('/dashboard/postulados', 'PostuladosController@index')->name('postulados');
