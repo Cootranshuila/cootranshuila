@@ -91,7 +91,7 @@
                     <li>
                         <a href="{{ route('pqr-correos') }}" class=" waves-effect">
                             <div class="d-inline-block icons-sm mr-2"><i class="fa fa-envelope"></i></div>
-                            <span> Correos</span>
+                            <span> Correos</span> 
                         </a>
                     </li>
                     <li>
@@ -129,7 +129,7 @@
                     </li>
                 @endif
 
-                <!--Menú de servicio especial-->
+                    <!--Menú de servicio especial-->
 
                 @routeIs('especial')
                     <li>
@@ -146,9 +146,121 @@
                     </li>
                 @endif
 
+                    <!--Menú de sanciones-->
+
+                @routeIs('sanciones')
+
+                        <li>
+                        <a href="" class=" waves-effect">
+                            <div class="d-inline-block icons-sm mr-2"><i class="fas fa-hourglass-half"></i></div>
+                            <span> Operativos en proceso</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" class=" waves-effect">
+                            <div class="d-inline-block icons-sm mr-2"><i class="fas fa-chevron-circle-down"></i></div>
+                            <span>Operativos terminados</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="" class=" waves-effect">
+                            <div class="d-inline-block icons-sm mr-2"><i class="fa fa-envelope-open-text"></i></div>
+                            <span>Agregar operativos</span>
+                        </a>
+                    </li>
+
+                @endif
+
+                    <!--Menú de Modem & Gps-->
+
+                @routeIs('modemygps')
+
+                    <li>
+                    <a href="" class=" waves-effect">
+                        <div class="d-inline-block icons-sm mr-2"><i class="fas fa-hourglass-half"></i></div>
+                        <span>En proceso</span>
+                    </a>
+                    </li>
+                    <li>
+                    <a href="" class=" waves-effect">
+                        <div class="d-inline-block icons-sm mr-2"><i class="fas fa-chevron-circle-down"></i></div>
+                        <span>Terminados</span>
+                    </a>
+                    </li>
+
+                    <li>
+                    <a href="" class=" waves-effect">
+                        <div class="d-inline-block icons-sm mr-2"><i class="fa fa-envelope-open-text"></i></div>
+                        <span>Agregar</span>
+                    </a>
+                    </li>
+
+                @endif
+
+                <!--Menú de Postulados-->
+
+                @routeIs('postulados')
+
+                    <li>
+                    <a href="" class=" waves-effect">
+                        <div class="d-inline-block icons-sm mr-2"><i class="fas fa-car"></i></div>
+                        <span>Conductores</span>
+                    </a>
+                    </li>
+
+                    <li>
+                    <a href="" class=" waves-effect">
+                        <div class="d-inline-block icons-sm mr-2"><i class="fas fa-hands-helping"></i></div>
+                        <span>Auxiliares de viaje</span>
+                    </a>
+                    </li>
+
+                    <li>
+                    <a href="" class=" waves-effect">
+                        <div class="d-inline-block icons-sm mr-2"><i class="far fa-user"></i></div>
+                        <span>Consignatarios taquilleros</span>
+                    </a>
+                    </li>
+
+                    <li>
+                    <a href="" class=" waves-effect">
+                        <div class="d-inline-block icons-sm mr-2"><i class="fas fa-satellite-dish"></i></div>
+                        <span>Consignatarios satélite</span>
+                    </a>
+                    </li>
+
+                @endif
+
+                <!--Menú de Turismo-->
+
+                @routeIs('turismo')
+
+                    <li>
+                    <a href="" class=" waves-effect">
+                        <div class="d-inline-block icons-sm mr-2"><i class="fas fa-user-tie"></i></div>
+                        <span>Clientes</span>
+                    </a>
+                    </li>
+
+                    <li>
+                    <a href="" class=" waves-effect">
+                        <div class="d-inline-block icons-sm mr-2"><i class="far fa-file-word"></i></div>
+                        <span>Encuestas</span>
+                    </a>
+                    </li>
+
+                    <li>
+                    <a href="" class=" waves-effect">
+                        <div class="d-inline-block icons-sm mr-2"><i class="fas fa-sms"></i></div>
+                        <span>Enviar SMS</span>
+                    </a>
+                    </li>
+
+                @endif
+
 
             </ul>
-
         </div>
         <!-- Sidebar -->
     </div>

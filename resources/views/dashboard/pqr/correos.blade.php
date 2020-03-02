@@ -9,6 +9,7 @@
 @extends('dashboard.layout.menu')
 
 @section('content')
+
 <div class="main-content">
 
     <div class="page-content">
@@ -69,19 +70,18 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-
                                                 @foreach ($correos as $correo)
                                                     <tr>
                                                         <th scope="row">
                                                             <a href="#">{{ $correo->num_correo }}</a>
                                                         </th>
-                                                        <td>{{ Str::limit($correo->nombre_usu, 15) }}</td>
-                                                        <td>{{ $correo->telefono_usu }}</td>
-                                                        <td>{{ Str::limit($correo->correo_usu, 20) }}</td>
-                                                        <td>{{ Str::limit($correo->mensaje_usu, 60) }}</td>
-                                                        <td>{{ $correo->fecha_correo }}</td>
+                                                        <td>{{ Str::limit(@$correo[nombre_usu], 15) }}</td>
+                                                        <td>{{ @$correo[telefono_usu] }}</td>
+                                                        <td>{{ Str::limit(@$correo[correo_usu], 20) }}</td>
+                                                        <td>{{ Str::limit(@$correo[mensaje_usu], 60) }}</td>
+                                                        <td>{{ @$correo[fecha_correo] }}</td>
                                                         <td class="text-center">
-                                                            <a href="{{ route('ver-pqr', $correo->num_correo) }}">
+                                                           <a href="{{ route('ver-pqr', $correo->num_correo) }}">
                                                                 <button type="button" class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="Ver Correo">
                                                                     <i class="mdi mdi-eye"></i>
                                                                 </button>
@@ -89,13 +89,11 @@
                                                         </td>
                                                     </tr>
                                                 @endforeach
-
                                             </tbody>
                                         </table>
                                     </div>
-
                                     {{ $correos->links() }}
-
+                                    </script>
                                 </div>
                             </div>
                         </div>
@@ -103,8 +101,7 @@
 
                 </div>
                 <!-- end row -->
-
-            </div> <!-- container-fluid -->
+            </div>
         </div>
         <!-- end page-content-wrapper -->
     </div>

@@ -13,7 +13,7 @@ class SancionesController extends Controller
      */
     public function index()
     {
-        //
+        return view('dashboard.servicio_especial.especialindex');
     }
 
     /**

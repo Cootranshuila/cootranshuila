@@ -78,10 +78,12 @@
                                                         <td>{{ Str::limit($reclamo->mensaje_usu, 60) }}</td>
                                                         <td>{{ $reclamo->fecha_correo }}</td>
                                                         <td class="text-center">
-                                                            <a href="{{ route('ver_pqr', $reclamo->num_correo) }}">
-                                                                <button type="button" class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="Ver Correo">
+                                                            <a href="">
+                                                                <a type="button"  class="btn btn-outline-secondary btn-sm"  data-nombre="{{$reclamo->nombre_usu}}" 
+                                                                data-telefono="{{$reclamo->telefono_usu}}" data-correo="{{$reclamo->correo_usu}}" data-mensaje="{{$reclamo->mensaje_usu}}"
+                                                                data-fecha="$reclamo->fecha_correo" data-placement="top" title="Ver Reclamo" data-toggle="modal" data-target="#exampleModalLong">
                                                                     <i class="mdi mdi-eye"></i>
-                                                                </button>
+                                                                </a>
                                                             </a>
                                                         </td>
                                                     </tr>
@@ -102,9 +104,52 @@
         </div>
         <!-- end page-content-wrapper -->
     </div>
-    <!-- End Page-content -->
 
-    
+    <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input type="text" class="form-control" name="name" id="nombre">
+        </div>
+        <div class="form-group">
+            <label for="telefono">Teléfono</label>
+            <input type="text" class="form-control" name="telefono" id="telefono">
+        </div>
+        <div class="form-group">
+            <label for="correo">Correo</label>
+            <input type="text" class="form-control" name="correo" id="correo">
+        </div>
+        <div class="form-group">
+            <label for="mensaje">Mensaje</label>
+            <input type="text" class="form-control" name="mensaje" id="mensaje">
+        </div>
+        <div class="form-group">
+            <label for="fecha">Fecha</label>
+            <input type="text" class="form-control" name="fecha" id="fecha">
+        </div>
+        <div class="form-group">
+            <label for="respuesta">Respuesta</label>
+            <textarea class="form-control rounded-0" id="respuesta" rows="3"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+     <!-- End Page-content -->
+
     <footer class="footer">
         <div class="container-fluid">
             <div class="row">
@@ -118,5 +163,4 @@
     </footer>
 </div>
 @endsection
-
 </div>
