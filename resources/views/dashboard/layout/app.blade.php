@@ -7,6 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="Dasboard Admin Cootranshuila LTDA" name="description" />
         <meta content="Cootranshuila LTDA" name="Cootranshuila" />
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         <!-- App favicon -->
         <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}">
 
@@ -60,6 +61,7 @@
         {{-- <script src="{{ asset('assets/js/pages/dashboard.init.js') }}"></script> --}}
 
         <script src="{{ asset('assets/js/clock.js') }}"></script>
+        <script src="{{ asset('assets/js/peticiones.js') }}"></script>
         <script src="{{ asset('assets/js/app.js') }}"></script>
 
     </body>

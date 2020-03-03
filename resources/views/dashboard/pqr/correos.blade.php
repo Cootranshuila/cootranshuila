@@ -1,5 +1,7 @@
 @extends('dashboard.layout.app')
 
+@extends('dashboard.layout.modal')
+
 @section('title') Correos @endsection
 
 <div id="layout-wrapper">
@@ -81,11 +83,9 @@
                                                         <td>{{ Str::limit($correo->mensaje_usu, 60) }}</td>
                                                         <td>{{ $correo->fecha_correo }}</td>
                                                         <td class="text-center">
-                                                            <a href="{{ route('ver-pqr', $correo->num_correo) }}">
-                                                                <button type="button" class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="Ver Correo">
-                                                                    <i class="mdi mdi-eye"></i>
-                                                                </button>
-                                                            </a>
+                                                            <button type="button" class="btn btn-outline-secondary btn-sm" onclick="verPQR({{ $correo->num_correo }})" data-toggle="tooltip" data-placement="top" title="Ver Correo">
+                                                                <i class="mdi mdi-eye"></i>
+                                                            </button>
                                                         </td>
                                                     </tr>
                                                 @endforeach

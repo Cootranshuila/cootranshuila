@@ -32,15 +32,16 @@ class PqrCorreosController extends Controller
     }
 
     
-    public function store(Request $request)
+    public function store($id)
     {
-        //
+        // 
     }
 
     
     public function show($id)
     {
-        //
+        $correo = Correo::findOrFail($id);
+        return ['correo' => $correo];
     }
 
     

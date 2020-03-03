@@ -43,6 +43,7 @@ Route::group(['middleware' => ['auth.admin']], function () {
         Route::get('/dashboard/pqr/contestados', 'PqrController@index')->name('pqr-contestados');
 
         Route::get('/dashboard/pqr/{id}/ver-pqr', 'PqrCorreosController@verPqr')->name('ver-pqr');
+        Route::get('/dashboard/pqr/{id}', 'PqrCorreosController@show');
     });
 
     Route::group(['middleware'=>['permission:servicio-especial|universal']],function(){
