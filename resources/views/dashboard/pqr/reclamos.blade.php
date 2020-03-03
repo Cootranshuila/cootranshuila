@@ -105,49 +105,6 @@
         <!-- end page-content-wrapper -->
     </div>
 
-    <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="form-group">
-            <label for="nombre">Nombre</label>
-            <input type="text" class="form-control" name="name" id="nombre">
-        </div>
-        <div class="form-group">
-            <label for="telefono">Teléfono</label>
-            <input type="text" class="form-control" name="telefono" id="telefono">
-        </div>
-        <div class="form-group">
-            <label for="correo">Correo</label>
-            <input type="text" class="form-control" name="correo" id="correo">
-        </div>
-        <div class="form-group">
-            <label for="mensaje">Mensaje</label>
-            <input type="text" class="form-control" name="mensaje" id="mensaje">
-        </div>
-        <div class="form-group">
-            <label for="fecha">Fecha</label>
-            <input type="text" class="form-control" name="fecha" id="fecha">
-        </div>
-        <div class="form-group">
-            <label for="respuesta">Respuesta</label>
-            <textarea class="form-control rounded-0" id="respuesta" rows="3"></textarea>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-
      <!-- End Page-content -->
 
     <footer class="footer">

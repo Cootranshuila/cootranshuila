@@ -26,31 +26,6 @@
         <!-- App Css-->
         <link href="{{ asset('assets/css/app-dark.min.css') }}" rel="stylesheet" type="text/css" />
 
-        <!--Script's para la ventana modal-->
-
-        <!--<script src="{{asset('js/app.js')}}"></script>-->
-        <script >
-            $('#exampleModalLong').on('show.bs.modal', function (event) {
-
-                //consle.log('hola mundo');
-                var button = $(event.relatedTarget) 
-                var nombre = button.data('nombre')
-                var telefono = button.data('telefono')
-                var correo = button.data('correo') 
-                var mensaje = button.data('mensaje')
-                var fecha = button.data('fecha')
-
-                var modal = $(this) 
-                modal.find('.modal-body #nombre').val(nombre);
-                modal.find('.modal-body #telefono').val(telefono);
-                modal.find('.modal-body #correo').val(correo);
-                modal.find('.modal-body #mensaje').val(mensaje);
-                modal.find('.modal-body #fecha').val(fecha);
-
-            })
-        </script>
-        <!--Fin Script's para la ventana modal-->
-
     </head>
 
     <body data-topbar="colored">
