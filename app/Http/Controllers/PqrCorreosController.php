@@ -47,7 +47,7 @@ class PqrCorreosController extends Controller
     
     public function edit($id)
     {
-        //
+        
     }
 
     

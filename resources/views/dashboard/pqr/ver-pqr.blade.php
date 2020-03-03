@@ -12,7 +12,6 @@
 <div class="main-content">
 
     <div class="page-content">
-        
         <!-- Page-Title -->
         <div class="page-title-box">
             <div class="container-fluid">
@@ -61,19 +60,25 @@
                                                 <tr>
                                                     <th scope="col">#</th>
                                                     <th scope="col">Nombre</th>
-                                                    <th scope="col">Telefono</th>
+                                                    <th scope="col">Teléfono</th>
                                                     <th scope="col">Correo</th>
                                                     <th scope="col">Mensaje</th>
                                                     <th scope="col" width="120px">Fecha</th>
-                                                    <th scope="col">Acciones</th>
+                                                    <th scope="col">Respuesta</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-
+                                            <th>{{ @$correo['num_correo']}}</th>
+                                            <td>{{ Str::limit(@$correo['nombre_usu'], 20) }}</td>
+                                            <td>{{ @$correo['telefono_usu'] }}</td>
+                                            <td>{{ Str::limit(@$correo['correo_usu'], 20) }}</td>
+                                            <td>{{ Str::limit(@$correo['mensaje_usu'], 10000) }}</td>
+                                            <td>{{ @$correo['fecha_correo'] }}</td>
+                                            <td>{{ @$correo['respuesta']}}</td>
                                             </tbody>
                                         </table>
                                     </div>
-                                    {{ $correo }}
+                                <!--{{ $correo }}-->
                                 </div>
                             </div>
                         </div>
@@ -88,7 +93,6 @@
     </div>
     <!-- End Page-content -->
 
-    
     <footer class="footer">
         <div class="container-fluid">
             <div class="row">

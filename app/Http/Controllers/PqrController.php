@@ -33,7 +33,7 @@ class PqrController extends Controller
     
     public function edit($id)
     {
-        //
+        
     }
 
     

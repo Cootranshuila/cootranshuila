@@ -11,6 +11,7 @@
 @extends('dashboard.layout.menu')
 
 @section('content')
+
 <div class="main-content">
 
     <div class="page-content">
@@ -71,31 +72,36 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-
                                                 @foreach ($correos as $correo)
                                                     <tr>
                                                         <th scope="row">
                                                             <a href="#">{{ $correo->num_correo }}</a>
                                                         </th>
-                                                        <td>{{ Str::limit($correo->nombre_usu, 15) }}</td>
-                                                        <td>{{ $correo->telefono_usu }}</td>
-                                                        <td>{{ Str::limit($correo->correo_usu, 20) }}</td>
-                                                        <td>{{ Str::limit($correo->mensaje_usu, 60) }}</td>
-                                                        <td>{{ $correo->fecha_correo }}</td>
+                                                        <td>{{ Str::limit(@$correo[nombre_usu], 15) }}</td>
+                                                        <td>{{ @$correo[telefono_usu] }}</td>
+                                                        <td>{{ Str::limit(@$correo[correo_usu], 20) }}</td>
+                                                        <td>{{ Str::limit(@$correo[mensaje_usu], 60) }}</td>
+                                                        <td>{{ @$correo[fecha_correo] }}</td>
                                                         <td class="text-center">
+<<<<<<< HEAD
                                                             <button type="button" class="btn btn-outline-secondary btn-sm" onclick="verPQR({{ $correo->num_correo }})" data-toggle="tooltip" data-placement="top" title="Ver Correo">
                                                                 <i class="mdi mdi-eye"></i>
                                                             </button>
+=======
+                                                           <a href="{{ route('ver-pqr', $correo->num_correo) }}">
+                                                                <button type="button" class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="Ver Correo">
+                                                                    <i class="mdi mdi-eye"></i>
+                                                                </button>
+                                                            </a>
+>>>>>>> b7c51358758a872350923c090ae2e30933edbb54
                                                         </td>
                                                     </tr>
                                                 @endforeach
-
                                             </tbody>
                                         </table>
                                     </div>
-
                                     {{ $correos->links() }}
-
+                                    </script>
                                 </div>
                             </div>
                         </div>
@@ -103,8 +109,7 @@
 
                 </div>
                 <!-- end row -->
-
-            </div> <!-- container-fluid -->
+            </div>
         </div>
         <!-- end page-content-wrapper -->
     </div>
