@@ -134,7 +134,7 @@
                 @if ( Request::is('dashboard/especial') || Request::is('dashboard/especial/*') )
                     <li>
                         <a href="" class=" waves-effect">
-                            <div class="d-inline-block icons-sm mr-2"><i class="fa fa-envelope-open-text"></i></div>
+                            <div class="d-inline-block icons-sm mr-2"><i class="fas fa-file-signature"></i></div>
                             <span> Contratos</span>
                         </a>
                     </li>
@@ -256,10 +256,8 @@
                         <span>Enviar SMS</span>
                     </a>
                     </li>
-
+                    
                 @endif
-
-
             </ul>
         </div>
         <!-- Sidebar -->

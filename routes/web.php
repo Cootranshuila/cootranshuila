@@ -33,6 +33,10 @@ Route::group(['middleware' => ['auth.admin']], function () {
 
         Route::get('/dashboard/pqr/{id}/ver-pqr', 'PqrCorreosController@verPqr')->name('ver-pqr');
         Route::get('/dashboard/pqr/{id}', 'PqrCorreosController@show');
+<<<<<<< HEAD
+=======
+        Route::get('/dashboard/pqr/buscador', 'PqrCorreosController@buscador');
+>>>>>>> 2c44ccda3cd0bd6f9223cbba0b7e0906f96b6649
     });
 
     Route::group(['middleware'=>['permission:servicio-especial|universal']],function(){

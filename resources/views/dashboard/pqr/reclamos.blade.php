@@ -1,5 +1,7 @@
 @extends('dashboard.layout.app')
 
+@extends('dashboard.layout.modal')
+
 @section('title') PQR @endsection
 
 <div id="layout-wrapper">
@@ -44,20 +46,43 @@
             </div>
         </div>
         <!-- end page title end breadcrumb -->
-
+        <style>
+         .right{
+            float: right; 
+        }
+        </style>
         <div class="page-content-wrapper">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-xl-12">
                         <div class="card">
                             <div class="card-body">
-                                <div class="row p-5">
-                                    <h5 class="header-title mb-4">Reclamos enviados desde la página web</h5>
-                                    <div class="table-responsive mb-3">
+                                <div class="row p-5">                   
+                                    <div class="table-responsive mb-3" id="Resultados">
                                         <table class="table table-centered table-hover table-bordered mb-0">
                                             <thead>
+                                            <tr>
+                                                <th colspan="12" class="text-center">
+                                                <div class="d-inline-block icons-sm mr-2"><i class="far fa-angry"></i></div>
+                                                    <span class="header-title mt-2">Reclamos enviados desde la página web</span>
+                                                </th>
+                                            </tr>
+                                            <!--Parte de busqueda de datos-->
+                                            <tr>
+                                                <th colspan="12">
+                                                    <div class="col-8 right mt-2">
+                                                        <div class="input-group mb-3">
+                                                            <input type="text" class="form-control" id="texto" placeholder="Ingrese nombre">
+                                                                <div class="input-group-append">
+                                                                    <span class="input-group-text">Buscar</span>
+                                                                </div>
+                                                        </div> 
+                                                    </div>
+                                                </th>
+                                            </tr>
+                                            <!--Fin parte de busqueda de datos-->
                                                 <tr>
-                                                    <th scope="col">#</th>
+                                                    <th scope="col">N°</th>
                                                     <th scope="col">Nombre</th>
                                                     <th scope="col">Teléfono</th>
                                                     <th scope="col">Correo</th>
@@ -78,20 +103,17 @@
                                                         <td>{{ Str::limit($reclamo->mensaje_usu, 60) }}</td>
                                                         <td>{{ $reclamo->fecha_correo }}</td>
                                                         <td class="text-center">
-                                                            <a href="">
-                                                                <a type="button"  class="btn btn-outline-secondary btn-sm"  data-nombre="{{$reclamo->nombre_usu}}" 
-                                                                data-telefono="{{$reclamo->telefono_usu}}" data-correo="{{$reclamo->correo_usu}}" data-mensaje="{{$reclamo->mensaje_usu}}"
-                                                                data-fecha="$reclamo->fecha_correo" data-placement="top" title="Ver Reclamo" data-toggle="modal" data-target="#exampleModalLong">
-                                                                    <i class="mdi mdi-eye"></i>
-                                                                </a>
-                                                            </a>
+                                                            <button type="button" class="btn btn-outline-secondary btn-sm" onclick="verPQR({{ $reclamo->num_correo }})" data-toggle="tooltip" data-placement="top" title="Ver Reclamo">
+                                                                <i class="mdi mdi-eye"></i>
+                                                            </button>
                                                         </td>
                                                     </tr>
                                                 @endforeach
                                             </tbody>
                                         </table>
                                     </div>
-                                    {{ $reclamo ?? ''->links() }}
+                                    {{$reclamos->links()}}
+                                    </script>
                                 </div>
                             </div>
                         </div>
@@ -104,49 +126,6 @@
         </div>
         <!-- end page-content-wrapper -->
     </div>
-
-    <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="form-group">
-            <label for="nombre">Nombre</label>
-            <input type="text" class="form-control" name="name" id="nombre">
-        </div>
-        <div class="form-group">
-            <label for="telefono">Teléfono</label>
-            <input type="text" class="form-control" name="telefono" id="telefono">
-        </div>
-        <div class="form-group">
-            <label for="correo">Correo</label>
-            <input type="text" class="form-control" name="correo" id="correo">
-        </div>
-        <div class="form-group">
-            <label for="mensaje">Mensaje</label>
-            <input type="text" class="form-control" name="mensaje" id="mensaje">
-        </div>
-        <div class="form-group">
-            <label for="fecha">Fecha</label>
-            <input type="text" class="form-control" name="fecha" id="fecha">
-        </div>
-        <div class="form-group">
-            <label for="respuesta">Respuesta</label>
-            <textarea class="form-control rounded-0" id="respuesta" rows="3"></textarea>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
 
      <!-- End Page-content -->
 
