@@ -11,19 +11,12 @@ function verPQR(id) {
         success: function (data) {
             $("#modal-blade").modal('show')
             $('#modal-blade-title').text('Correo N° '+data.correo.num_correo)
-            //$('#modal-blade-body').text('Nombre: '+data.correo.nombre_usu+' Teléfono: '+data.correo.telefono_usu)
-            $('.modal-body #nombre').val(data.correo.nombre_usu)
-            $('.modal-body #telefono').val(data.correo.telefono_usu)
-            $('.modal-body #correo').val(data.correo.correo_usu)
-            $('.modal-body #mensaje').val(data.correo.mensaje_usu)
-            $('.modal-body #fecha').val(data.correo.fecha_correo)
-            console.log(data.correo)
+            $('#modal-blade-body').text('Nombre: '+data.correo.nombre_usu+' Teléfono: '+data.correo.telefono_usu)
         }
     });
     return false;
 }
 
-<<<<<<< HEAD
 tinymce.init({
     selector: 'textarea#elm1',
 });
@@ -66,7 +59,6 @@ tinymce.init({
 //         }]
 //     })
 // });
-=======
 window.addEventListener("load",function(){
     document.getElementById("texto").addEventListener("keyup",function(){
         fetch('/dashboard/pqr/buscador?text=${document.getElementById("texto").value}',{
@@ -78,4 +70,3 @@ window.addEventListener("load",function(){
          })
     })
 })
->>>>>>> 2c44ccda3cd0bd6f9223cbba0b7e0906f96b6649

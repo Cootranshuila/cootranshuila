@@ -1,6 +1,6 @@
 
 
-<!--<div class="modal fade bs-example-modal-xl" id="modal-blade" tabindex="-1" role="dialog" aria-labelledby="modal-blade-title" aria-hidden="true">
+<div class="modal fade bs-example-modal-xl" id="modal-blade" tabindex="-1" role="dialog" aria-labelledby="modal-blade-title" aria-hidden="true">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
@@ -15,11 +15,11 @@
             <textarea id="elm1" name="area"></textarea>
         </div>
     </div>
-</div>-->
+</div>
 
 <!--Otro Modal :v-->
 
-<div class="modal fade" id="modal-blade" tabindex="-1" role="dialog" aria-labelledby="modal-blade-title" aria-hidden="true">
+{{-- <div class="modal fade" id="modal-blade" tabindex="-1" role="dialog" aria-labelledby="modal-blade-title" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -62,4 +62,4 @@
       </div>
     </div>
   </div>
-</div>
+</div> --}}
