@@ -19,25 +19,24 @@
                     <div class="col-md-8">
                         <h4 class="page-title mb-1">Dashboard</h4>
                         <ol class="breadcrumb m-0">
-                        <li class="breadcrumb-item active">Panel del Administrador</li>
+                            <li class="breadcrumb-item active">Panel del Administrador</li>
                         </ol>
                     </div>
-                    {{-- <div class="col-md-4">
+                    <div class="col-md-4">
                         <div class="float-right d-none d-md-block">
-                            <div class="dropdown">
-                                <button class="btn btn-light btn-rounded dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="mdi mdi-settings-outline mr-1"></i> Settings
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated">
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Separated link</a>
-                                </div>
+                            <div class="date text-white text-muted">
+                                <span id="weekDay" class="weekDay"></span>, 
+                                <span id="day" class="day"></span> de
+                                <span id="month" class="month"></span> del
+                                <span id="year" class="year"></span>
+                            </div>
+                            <div class="clock text-white text-muted">
+                                <span id="hours" class="hours"></span> :
+                                <span id="minutes" class="minutes"></span> :
+                                <span id="seconds" class="seconds"></span>
                             </div>
                         </div>
-                    </div> --}}
+                    </div>
                 </div>
 
             </div>
