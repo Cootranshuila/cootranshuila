@@ -14,15 +14,21 @@ class PqrCorreosController extends Controller
         return view('dashboard.pqr.correos', ['correos' => $correos]);
     }
 
-    public function verPqr($id)
+   /* public function verPqr($id)
     {
         $correo = Correo::findOrFail($id);
         return view('dashboard.pqr.ver-pqr', ['correo' => $correo]);
-    }
+    }*/
 
     public function reclamos()
     {
         $reclamos = Correo::paginate(10);
+        return view('dashboard.pqr.reclamos', ['reclamos' => $reclamos]);
+    }
+
+    public function buscador(Request $request)
+    {
+        $nombre=Correo::where("nombre_usu","like", $request->text."%")->take(5)->get();
         return view('dashboard.pqr.reclamos', ['reclamos' => $reclamos]);
     }
     

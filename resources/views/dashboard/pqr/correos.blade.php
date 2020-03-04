@@ -55,12 +55,15 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="row p-5">
-
-                                    <h5 class="header-title mb-4">Correos enviados desde la pagina web.</h5>
-
                                     <div class="table-responsive mb-3">
                                         <table class="table table-centered table-hover table-bordered mb-0">
                                             <thead>
+                                                <tr>
+                                                    <th colspan="12" class="text-center">
+                                                    <div class="d-inline-block icons-sm mr-2"><i class="fas fa-envelope-open-text"></i></div>
+                                                        <span class="header-title mt-2">Correos enviados desde la página web</span>
+                                                    </th>
+                                                </tr>
                                                 <tr>
                                                     <th scope="col">#</th>
                                                     <th scope="col">Nombre</th>

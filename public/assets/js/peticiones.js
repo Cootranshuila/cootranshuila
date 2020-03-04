@@ -22,3 +22,15 @@ function verPQR(id) {
     });
     return false;
 }
+
+window.addEventListener("load",function(){
+    document.getElementById("texto").addEventListener("keyup",function(){
+        fetch('/dashboard/pqr/buscador?text=${document.getElementById("texto").value}',{
+            method:'get'
+        })
+         .then(Response=>Response.text())
+         .then(html=>{
+             document.getElementById("Resultados").innerHTML +=html
+         })
+    })
+})
