@@ -16,14 +16,14 @@
                 </li>
 
                 <li class="menu-title">
-                    @routeIs('dashboard') Aplicaciones @else Aplicacion:  @endif
+                    @routeIs('dashboard') Aplicaciones @else Aplicacion: @endif
                     <i>
-                        @routeIs('pqr') PQR  @endif
-                        @routeIs('especial') Servicio Especial  @endif
-                        @routeIs('sanciones') Operativos y Sanciones  @endif
-                        @routeIs('modemygps') Modem y GPS  @endif
-                        @routeIs('postulados') Postulados  @endif
-                        @routeIs('turismo') Turismo  @endif
+                        @if ( Request::is('dashboard/pqr') || Request::is('dashboard/pqr/*') ) PQR @endif
+                        @if ( Request::is('dashboard/especial') || Request::is('dashboard/especial/*') ) Servicio Especial @endif
+                        @if ( Request::is('dashboard/sanciones') || Request::is('dashboard/sanciones/*') ) Operativos y Sanciones @endif
+                        @if ( Request::is('dashboard/modemygps') || Request::is('dashboard/modemygps/*') ) Modem y GPS @endif
+                        @if ( Request::is('dashboard/postulados') || Request::is('dashboard/postulados/*') ) Postulados @endif
+                        @if ( Request::is('dashboard/turismo') || Request::is('dashboard/turismo/*') ) Turismo @endif
                     </i> 
                 </li>
 
@@ -87,7 +87,7 @@
                 @endif
 
                 <!-- MENU del PQR -->
-                @routeIs('pqr')
+                @if ( Request::is('dashboard/pqr') || Request::is('dashboard/pqr/*') )
                     <li>
                         <a href="{{ route('pqr-correos') }}" class=" waves-effect">
                             <div class="d-inline-block icons-sm mr-2"><i class="fa fa-envelope"></i></div>
@@ -131,7 +131,7 @@
 
                     <!--Menú de servicio especial-->
 
-                @routeIs('especial')
+                @if ( Request::is('dashboard/especial') || Request::is('dashboard/especial/*') )
                     <li>
                         <a href="" class=" waves-effect">
                             <div class="d-inline-block icons-sm mr-2"><i class="fa fa-envelope-open-text"></i></div>
@@ -148,7 +148,7 @@
 
                     <!--Menú de sanciones-->
 
-                @routeIs('sanciones')
+                @if ( Request::is('dashboard/sanciones') || Request::is('dashboard/sanciones/*') )
 
                         <li>
                         <a href="" class=" waves-effect">
@@ -174,7 +174,7 @@
 
                     <!--Menú de Modem & Gps-->
 
-                @routeIs('modemygps')
+                @if ( Request::is('dashboard/modemygps') || Request::is('dashboard/modemygps/*') )
 
                     <li>
                     <a href="" class=" waves-effect">
@@ -200,7 +200,7 @@
 
                 <!--Menú de Postulados-->
 
-                @routeIs('postulados')
+                @if ( Request::is('dashboard/postulados') || Request::is('dashboard/postulados/*') )
 
                     <li>
                     <a href="" class=" waves-effect">
@@ -234,7 +234,7 @@
 
                 <!--Menú de Turismo-->
 
-                @routeIs('turismo')
+                @if ( Request::is('dashboard/turismo') || Request::is('dashboard/turismo/*') )
 
                     <li>
                     <a href="" class=" waves-effect">

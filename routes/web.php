@@ -1,16 +1,5 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 Route::get('/', function () {
     return view('welcome');
 });
@@ -43,11 +32,7 @@ Route::group(['middleware' => ['auth.admin']], function () {
         Route::get('/dashboard/pqr/contestados', 'PqrController@index')->name('pqr-contestados');
 
         Route::get('/dashboard/pqr/{id}/ver-pqr', 'PqrCorreosController@verPqr')->name('ver-pqr');
-<<<<<<< HEAD
         Route::get('/dashboard/pqr/{id}', 'PqrCorreosController@show');
-=======
-
->>>>>>> b7c51358758a872350923c090ae2e30933edbb54
     });
 
     Route::group(['middleware'=>['permission:servicio-especial|universal']],function(){

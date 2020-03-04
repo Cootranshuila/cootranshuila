@@ -12,6 +12,7 @@
             <div class="modal-body" id="modal-blade-body">
                 
             </div>
+            <textarea id="elm1" name="area"></textarea>
         </div>
     </div>
 </div>
