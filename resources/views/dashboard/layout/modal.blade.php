@@ -12,7 +12,7 @@
             <div class="modal-body" id="modal-blade-body">
      
             </div>
-            <textarea id="elm1" name="area"></textarea>
+            <textarea name="editor1" id="editor1"></textarea>
         </div>
     </div>
 </div>

@@ -61,8 +61,7 @@
         <!-- Jq vector map -->
         <script src="{{ asset('assets/libs/jqvmap/jquery.vmap.min.js') }}"></script>
         <script src="{{ asset('assets/libs/jqvmap/maps/jquery.vmap.usa.js') }}"></script>
-        <script src="{{ asset('assets/libs/tinymce/tinymce.min.js') }}"></script>
-        <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+        <script src="{{ asset('assets/libs/ckeditor4/ckeditor.js') }}"></script>
 
 
         {{-- <script src="{{ asset('assets/js/pages/dashboard.init.js') }}"></script> --}}
