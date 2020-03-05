@@ -53,47 +53,8 @@
                     <div class="col-xl-12">
                         <div class="card">
                             <div class="card-body">
-                                <div class="row p-5">
-                                    <div class="table-responsive mb-3">
-                                        <table class="table table-centered table-hover table-bordered mb-0">
-                                            <thead>
-                                                <tr>
-                                                    <th colspan="12" class="text-center">
-                                                    <div class="d-inline-block icons-sm mr-2"><i class="fas fa-envelope-open-text"></i></div>
-                                                        <span class="header-title mt-2">Correos enviados desde la página web</span>
-                                                    </th>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="col">#</th>
-                                                    <th scope="col">Nombre</th>
-                                                    <th scope="col">Telefono</th>
-                                                    <th scope="col">Correo</th>
-                                                    <th scope="col">Mensaje</th>
-                                                    <th scope="col" width="120px">Fecha</th>
-                                                    <th scope="col">Acciones</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @foreach ($correos as $correo)
-                                                    <tr>
-                                                        <th scope="row">
-                                                            <a href="#">{{ $correo->num_correo }}</a>
-                                                        </th>
-                                                        <td>{{ Str::limit(@$correo[nombre_usu], 15) }}</td>
-                                                        <td>{{ @$correo[telefono_usu] }}</td>
-                                                        <td>{{ Str::limit(@$correo[correo_usu], 20) }}</td>
-                                                        <td>{{ Str::limit(@$correo[mensaje_usu], 60) }}</td>
-                                                        <td>{{ @$correo[fecha_correo] }}</td>
-                                                        <td class="text-center">
-                                                            <button type="button" class="btn btn-outline-secondary btn-sm" onclick="verPQR({{ $correo->num_correo }})" data-toggle="tooltip" data-placement="top" title="Ver Correo">
-                                                                <i class="mdi mdi-eye"></i>
-                                                            </button>
-                                                        </td>
-                                                    </tr>
-                                                @endforeach
-                                            </tbody>
-                                        </table>
-                                    </div>
+                                <div class="row p-5" id="tabla-correos">
+                                    
                                     {{ $correos->links() }}
                                 </div>
                             </div>

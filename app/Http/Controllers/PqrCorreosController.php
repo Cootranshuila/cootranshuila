@@ -14,11 +14,11 @@ class PqrCorreosController extends Controller
         return view('dashboard.pqr.correos', ['correos' => $correos]);
     }
 
-   /* public function verPqr($id)
+    public function tabla($tipo)
     {
-        $correo = Correo::findOrFail($id);
-        return view('dashboard.pqr.ver-pqr', ['correo' => $correo]);
-    }*/
+        $correos = Correo::paginate(10)->onEachSide(1);
+        return ['correos' => $correos];
+    }
 
     public function reclamos()
     {

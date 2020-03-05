@@ -17,22 +17,84 @@ function verPQR(id) {
     return false;
 }
 
-window.addEventListener("load",function(){
-    document.getElementById("texto").addEventListener("keyup",function(){
-        fetch('/dashboard/pqr/buscador?text=${document.getElementById("texto").value}',{
-            method:'get'
-        })
-         .then(Response=>Response.text())
-         .then(html=>{
-             document.getElementById("Resultados").innerHTML +=html
-         })
-    })
-})
+// window.addEventListener("load",function(){
+//     document.getElementById("texto").addEventListener("keyup",function(){
+//         fetch('/dashboard/pqr/buscador?text=${document.getElementById("texto").value}',{
+//             method:'get'
+//         })
+//          .then(Response=>Response.text())
+//          .then(html=>{
+//              document.getElementById("Resultados").innerHTML +=html
+//          })
+//     })
+// })
 
 
 $(document).ready(function(){
+
+    var tipo = 'correos';
+    var html = '';
+
+    // Iniciador de TEXAREA para contestar los correos
     CKEDITOR.replace("editor1",{
         height:"200px"
-    })
-    // $( '#editor1' ).ckeditor();
+    });
+
+    // Peticion AJAX para listar la tabla de correos
+    $.ajax({
+        url: '/dashboard/pqr/'+tipo,
+        type: 'POST',
+        data: { tipo:tipo },
+        success: function (data) {
+            console.log(data.correos.data[0].num_correo)
+            html = `
+                <div class="table-responsive mb-3">
+                    <table class="table table-centered table-hover table-bordered mb-0">
+                        <thead>
+                            <tr>
+                                <th colspan="12" class="text-center">
+                                <div class="d-inline-block icons-sm mr-2"><i class="fas fa-envelope-open-text"></i></div>
+                                    <span class="header-title mt-2">Correos enviados desde la página web</span>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Telefono</th>
+                                <th scope="col">Correo</th>
+                                <th scope="col">Mensaje</th>
+                                <th scope="col" width="120px">Fecha</th>
+                                <th scope="col">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        `
+                        for (var i = 0; i < 10; i++) {
+                            html += `
+                                <tr>
+                                    <th scope="row">
+                                        <a href="#">${ data.correos.data[i].num_correo }</a>
+                                    </th>
+                                    <td>${ data.correos.data[i].nombre_usu }</td>
+                                    <td>${ data.correos.data[i].telefono_usu }</td>
+                                    <td>${ data.correos.data[i].correo_usu }</td>
+                                    <td>${ data.correos.data[i].mensaje_usu }</td>
+                                    <td>${ data.correos.data[i].fecha_correo }</td>
+                                    <td class="text-center">
+                                        <button type="button" class="btn btn-outline-secondary btn-sm" onclick="verPQR({{ $correo->num_correo }})" data-toggle="tooltip" data-placement="top" title="Ver Correo">
+                                            <i class="mdi mdi-eye"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            `
+                        }
+                        html += `        
+                        </tbody>
+                    </table>
+                </div> `;
+            
+            $('#tabla-correos').html(html);
+        }
+    });
+
 });

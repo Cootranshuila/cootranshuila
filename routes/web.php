@@ -24,6 +24,7 @@ Route::group(['middleware' => ['auth.admin']], function () {
     //Grupo de Rutas para el modulo de PQR
     Route::group(['middleware' => ['permission:pqr|universal']], function () {
         Route::get('/dashboard/pqr', 'PqrController@index')->name('pqr');
+        Route::post('/dashboard/pqr/{tipo}', 'PqrCorreosController@tabla');
         Route::get('/dashboard/pqr/correos', 'PqrCorreosController@index')->name('pqr-correos');
         Route::get('/dashboard/pqr/reclamos', 'PqrCorreosController@reclamos')->name('pqr-reclamos');
         Route::get('/dashboard/pqr/sugerencias', 'PqrController@index')->name('pqr-sugerencias');
