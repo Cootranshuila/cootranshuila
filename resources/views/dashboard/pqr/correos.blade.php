@@ -55,7 +55,7 @@
                             <div class="card-body">
                                 <div class="row p-5" id="tabla-correos">
                                     
-                                    {{ $correos->links() }}
+                                    {{-- {{ $correos->links() }} --}}
                                 </div>
                             </div>
                         </div>

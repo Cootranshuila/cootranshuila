@@ -32,7 +32,24 @@ function verPQR(id) {
 
 $(document).ready(function(){
 
-    var tipo = 'correos';
+    switch (window.location.pathname) {
+        case '/dashboard/pqr/correos':
+            var tipo = 'Correo';
+            break;
+        case '/dashboard/pqr/reclamos':
+            var tipo = 'Reclamo';
+            break;
+        case '/dashboard/pqr/quejas':
+            var tipo = 'Queja';
+            break;
+        case '/dashboard/pqr/sugerencias':
+            var tipo = 'Sugerencia';
+            break;
+        default:
+
+            break;
+    }
+
     var html = '';
 
     // Iniciador de TEXAREA para contestar los correos
@@ -46,52 +63,53 @@ $(document).ready(function(){
         type: 'POST',
         data: { tipo:tipo },
         success: function (data) {
-            console.log(data.correos.data[0].num_correo)
+            // console.log(Object.values(data))
             html = `
-                <div class="table-responsive mb-3">
-                    <table class="table table-centered table-hover table-bordered mb-0">
-                        <thead>
-                            <tr>
-                                <th colspan="12" class="text-center">
-                                <div class="d-inline-block icons-sm mr-2"><i class="fas fa-envelope-open-text"></i></div>
-                                    <span class="header-title mt-2">Correos enviados desde la página web</span>
-                                </th>
-                            </tr>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Nombre</th>
-                                <th scope="col">Telefono</th>
-                                <th scope="col">Correo</th>
-                                <th scope="col">Mensaje</th>
-                                <th scope="col" width="120px">Fecha</th>
-                                <th scope="col">Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        `
-                        for (var i = 0; i < 10; i++) {
-                            html += `
+                    <div class="table-responsive mb-3">
+                        <table class="table table-centered table-hover table-bordered mb-0">
+                            <thead>
                                 <tr>
-                                    <th scope="row">
-                                        <a href="#">${ data.correos.data[i].num_correo }</a>
+                                    <th colspan="12" class="text-center">
+                                    <div class="d-inline-block icons-sm mr-2"><i class="fas fa-envelope-open-text"></i></div>
+                                        <span class="header-title mt-2">Correos enviados desde la página web</span>
                                     </th>
-                                    <td>${ data.correos.data[i].nombre_usu }</td>
-                                    <td>${ data.correos.data[i].telefono_usu }</td>
-                                    <td>${ data.correos.data[i].correo_usu }</td>
-                                    <td>${ data.correos.data[i].mensaje_usu }</td>
-                                    <td>${ data.correos.data[i].fecha_correo }</td>
-                                    <td class="text-center">
-                                        <button type="button" class="btn btn-outline-secondary btn-sm" onclick="verPQR({{ $correo->num_correo }})" data-toggle="tooltip" data-placement="top" title="Ver Correo">
-                                            <i class="mdi mdi-eye"></i>
-                                        </button>
-                                    </td>
                                 </tr>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Nombre</th>
+                                    <th scope="col">Telefono</th>
+                                    <th scope="col">Correo</th>
+                                    <th scope="col">Mensaje</th>
+                                    <th scope="col" width="120px">Fecha</th>
+                                    <th scope="col">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
                             `
-                        }
-                        html += `        
-                        </tbody>
-                    </table>
-                </div> `;
+                            Object.values(data.correos).forEach(correo => {
+                                html += `
+                                    <tr>
+                                        <th scope="row">
+                                            <a href="#">${ correo.num_reclamo }</a>
+                                        </th>
+                                        <td>${ correo.clasificacion }</td>
+                                        <td>${ correo.num_reclamo }</td>
+                                        <td>${ correo.num_reclamo }</td>
+                                        <td>${ correo.num_reclamo }</td>
+                                        <td>${ correo.num_reclamo }</td>
+                                        <td class="text-center">
+                                            <button type="button" class="btn btn-outline-secondary btn-sm" onclick="verPQR({{ $correo->num_correo }})" data-toggle="tooltip" data-placement="top" title="Ver Correo">
+                                                <i class="mdi mdi-eye"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                `
+                            });
+                            html += `        
+                            </tbody>
+                        </table>
+                    </div>
+                `;
             
             $('#tabla-correos').html(html);
         }
