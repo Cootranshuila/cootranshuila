@@ -27,9 +27,9 @@ Route::group(['middleware' => ['auth.admin']], function () {
         Route::post('/dashboard/pqr/{tipo}', 'PqrCorreosController@tabla');
         Route::get('/dashboard/pqr/correos', 'PqrCorreosController@index')->name('pqr-correos');
         Route::get('/dashboard/pqr/reclamos', 'PqrCorreosController@reclamos')->name('pqr-reclamos');
-        Route::get('/dashboard/pqr/sugerencias', 'PqrController@index')->name('pqr-sugerencias');
-        Route::get('/dashboard/pqr/quejas', 'PqrController@index')->name('pqr-quejas');
-        Route::get('/dashboard/pqr/felicitaciones', 'PqrController@index')->name('pqr-felicitaciones');
+        Route::get('/dashboard/pqr/sugerencias', 'PqrCorreosController@sugerencia')->name('pqr-sugerencias');
+        Route::get('/dashboard/pqr/quejas', 'PqrCorreosController@quejas')->name('pqr-quejas');
+        Route::get('/dashboard/pqr/felicitaciones', 'PqrCorreosController@felicitaciones')->name('pqr-felicitaciones');
         Route::get('/dashboard/pqr/contestados', 'PqrController@index')->name('pqr-contestados');
 
         Route::get('/dashboard/pqr/{id}/ver-pqr', 'PqrCorreosController@verPqr')->name('ver-pqr');

@@ -13,17 +13,37 @@ class PqrCorreosController extends Controller
         return view('dashboard.pqr.correos');
     }
 
+    public function reclamos()
+    {
+        $reclamos = Correo::paginate(10);
+        return view('dashboard.pqr.reclamos', ['reclamos' => $reclamos]);
+    }
+
+    public function sugerencia()
+    {
+        $reclamos = Correo::paginate(10);
+        return view('dashboard.pqr.sugerencias', ['reclamos' => $reclamos]);
+    }
+
+    public function quejas()
+    {
+        $reclamos = Correo::paginate(10);
+        return view('dashboard.pqr.quejas', ['reclamos' => $reclamos]);
+    }
+
+    public function felicitaciones()
+    {
+        $reclamos = Correo::paginate(10);
+        return view('dashboard.pqr.felicitaciones', ['reclamos' => $reclamos]);
+    }
+
     public function tabla($tipo)
     {
         $correos = Correo::all()->where('clasificacion', $tipo);
         return ['correos' => $correos];
     }
 
-    public function reclamos()
-    {
-        $reclamos = Correo::paginate(10);
-        return view('dashboard.pqr.reclamos', ['reclamos' => $reclamos]);
-    }
+    
 
     public function buscador(Request $request)
     {

@@ -45,6 +45,9 @@ $(document).ready(function(){
         case '/dashboard/pqr/sugerencias':
             var tipo = 'Sugerencia';
             break;
+        case '/dashboard/pqr/felicitaciones':
+            var tipo = 'Felicitaciones';
+            break;
         default:
 
             break;
@@ -63,15 +66,74 @@ $(document).ready(function(){
         type: 'POST',
         data: { tipo:tipo },
         success: function (data) {
-            // console.log(Object.values(data))
+             //console.log(Object.values(data.correos)[0].clasificacion)
             html = `
                     <div class="table-responsive mb-3">
                         <table class="table table-centered table-hover table-bordered mb-0">
+                        <style>
+                            .right
+                            {
+                             float: right; 
+                            }
+                       </style>
                             <thead>
                                 <tr>
                                     <th colspan="12" class="text-center">
-                                    <div class="d-inline-block icons-sm mr-2"><i class="fas fa-envelope-open-text"></i></div>
+                                    `
+                                    if(Object.values(data.correos)[0].clasificacion=="Correo")
+                                    {
+                                        html +=
+                                        `
+                                        <div class="d-inline-block icons-sm mr-2"><i class="fas fa-envelope-open-text"></i></div>
                                         <span class="header-title mt-2">Correos enviados desde la página web</span>
+                                        `
+                                    }
+                                    else if(Object.values(data.correos)[0].clasificacion=="Reclamo")
+                                    {
+                                        html +=
+                                        `
+                                        <div class="d-inline-block icons-sm mr-2"><i class="far fa-angry"></i></div>
+                                        <span class="header-title mt-2">Reclamos enviados desde la página web</span>
+                                        `
+                                    }
+                                    else if(Object.values(data.correos)[0].clasificacion=="Queja")
+                                    {
+                                        html +=
+                                        `
+                                        <div class="d-inline-block icons-sm mr-2"><i class="far fa-tired"></i></div>
+                                        <span class="header-title mt-2">Quejas enviadas desde la página web</span>
+                                        `
+                                    }
+                                    else if(Object.values(data.correos)[0].clasificacion=="Sugerencia")
+                                    {
+                                        html +=
+                                        `
+                                        <div class="d-inline-block icons-sm mr-2"><i class="fas fa-ad"></i></div>
+                                        <span class="header-title mt-2">Sugerencias enviadas desde la página web</span>
+                                        `
+                                    }
+                                    else 
+                                    {
+                                        html +=
+                                        `
+                                        <div class="d-inline-block icons-sm mr-2"><i class="fas fa-ad"></i></div>
+                                        <span class="header-title mt-2">Felicitaciones enviadas desde la página web</span>
+                                        `
+                                    }
+                                  
+                                    `
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th colspan="12">
+                                        <div class="col-8 right mt-2">
+                                            <div class="input-group mb-3">
+                                                <input type="text" class="form-control" id="texto" placeholder="Ingrese nombre">
+                                                    <div class="input-group-append">
+                                                        <span class="input-group-text">Buscar</span>
+                                                    </div>
+                                            </div> 
+                                        </div>
                                     </th>
                                 </tr>
                                 <tr>
@@ -92,11 +154,10 @@ $(document).ready(function(){
                                         <th scope="row">
                                             <a href="#">${ correo.num_reclamo }</a>
                                         </th>
-                                        <td>${ correo.clasificacion }</td>
-                                        <td>${ correo.num_reclamo }</td>
-                                        <td>${ correo.num_reclamo }</td>
-                                        <td>${ correo.num_reclamo }</td>
-                                        <td>${ correo.num_reclamo }</td>
+                                        <td>${ correo.nom_cli_re }</td>
+                                        <td>${ correo.tel_cli_re }</td>
+                                        <td>${ correo.correo_cli_re }</td>
+                                        <td>${ correo.mensaje_reclamo }</td>
                                         <td class="text-center">
                                             <button type="button" class="btn btn-outline-secondary btn-sm" onclick="verPQR({{ $correo->num_correo }})" data-toggle="tooltip" data-placement="top" title="Ver Correo">
                                                 <i class="mdi mdi-eye"></i>

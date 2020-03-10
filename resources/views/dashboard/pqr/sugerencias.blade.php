@@ -2,7 +2,7 @@
 
 @extends('dashboard.layout.modal')
 
-@section('title') PQR @endsection
+@section('title') Correos @endsection
 
 <div id="layout-wrapper">
 
@@ -11,6 +11,7 @@
 @extends('dashboard.layout.menu')
 
 @section('content')
+
 <div class="main-content">
 
     <div class="page-content">
@@ -45,6 +46,7 @@
             </div>
         </div>
         <!-- end page title end breadcrumb -->
+
         <div class="page-content-wrapper">
             <div class="container-fluid">
                 <div class="row">
@@ -65,9 +67,9 @@
         </div>
         <!-- end page-content-wrapper -->
     </div>
+    <!-- End Page-content -->
 
-     <!-- End Page-content -->
-
+    
     <footer class="footer">
         <div class="container-fluid">
             <div class="row">
@@ -81,4 +83,5 @@
     </footer>
 </div>
 @endsection
+
 </div>
