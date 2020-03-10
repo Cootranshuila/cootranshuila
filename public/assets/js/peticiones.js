@@ -116,7 +116,7 @@ $(document).ready(function(){
                                     {
                                         html +=
                                         `
-                                        <div class="d-inline-block icons-sm mr-2"><i class="fas fa-ad"></i></div>
+                                        <div class="d-inline-block icons-sm mr-2"><i class="far fa-laugh-wink"></i></div>
                                         <span class="header-title mt-2">Felicitaciones enviadas desde la página web</span>
                                         `
                                     }
