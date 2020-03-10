@@ -5,13 +5,14 @@ $.ajaxSetup({
 });
 
 function verPQR(id) {
+    console.log(id);
     $.ajax({
         url: '/dashboard/pqr/'+id,
         type: 'GET',
         success: function (data) {
             $("#modal-blade").modal('show')
-            $('#modal-blade-title').text('Correo N° '+data.correo.num_correo)
-            $('#modal-blade-body').text('Nombre: '+data.correo.nombre_usu+' Teléfono: '+data.correo.telefono_usu)
+            $('#modal-blade-title').text('Correo N° '+data.correo.num_reclamo)
+            $('#modal-blade-body').text('Nombre: '+data.correo.nom_cli_re+' Teléfono: '+data.correo.tel_cli_re)
         }
     });
     return false;
@@ -149,6 +150,7 @@ $(document).ready(function(){
                             <tbody>
                             `
                             Object.values(data.correos).forEach(correo => {
+                                //console.log(correo.correo_cli_re);
                                 html += `
                                     <tr>
                                         <th scope="row">
@@ -159,7 +161,7 @@ $(document).ready(function(){
                                         <td>${ correo.correo_cli_re }</td>
                                         <td>${ correo.mensaje_reclamo }</td>
                                         <td class="text-center">
-                                            <button type="button" class="btn btn-outline-secondary btn-sm" onclick="verPQR({{ $correo->num_correo }})" data-toggle="tooltip" data-placement="top" title="Ver Correo">
+                                            <button type="button" class="btn btn-outline-secondary btn-sm" onclick="verPQR(${correo.num_reclamo})" data-toggle="tooltip" data-placement="top" title="Ver Correo">
                                                 <i class="mdi mdi-eye"></i>
                                             </button>
                                         </td>
@@ -171,7 +173,7 @@ $(document).ready(function(){
                         </table>
                     </div>
                 `;
-            
+                            
             $('#tabla-correos').html(html);
         }
     });
