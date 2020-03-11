@@ -91,7 +91,7 @@
                     <li>
                         <a href="{{ route('pqr-correos') }}" class=" waves-effect">
                             <div class="d-inline-block icons-sm mr-2"><i class="fa fa-envelope"></i></div>
-                            <span> Correos</span> 
+                            <span> Correo</span> 
                         </a>
                     </li>
                     <li>

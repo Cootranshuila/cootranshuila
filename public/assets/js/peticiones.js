@@ -10,51 +10,18 @@ function verPQR(id) {
         url: '/dashboard/pqr/'+id,
         type: 'GET',
         success: function (data) {
-            $("#modal-blade").modal('show')
-            $('#modal-blade-title').text('Correo N° '+data.correo.num_reclamo)
+            $("#modal-blade").modal('show');
+            $('#modal-blade-title').text('Correo N° '+data.correo.num_reclamo);
             $('#modal-blade-body').text('Nombre: '+data.correo.nom_cli_re+' Teléfono: '+data.correo.tel_cli_re)
+          
         }
     });
     return false;
 }
 
-// window.addEventListener("load",function(){
-//     document.getElementById("texto").addEventListener("keyup",function(){
-//         fetch('/dashboard/pqr/buscador?text=${document.getElementById("texto").value}',{
-//             method:'get'
-//         })
-//          .then(Response=>Response.text())
-//          .then(html=>{
-//              document.getElementById("Resultados").innerHTML +=html
-//          })
-//     })
-// })
-
+var tipo;
 
 $(document).ready(function(){
-
-    switch (window.location.pathname) {
-        case '/dashboard/pqr/correos':
-            var tipo = 'Correo';
-            break;
-        case '/dashboard/pqr/reclamos':
-            var tipo = 'Reclamo';
-            break;
-        case '/dashboard/pqr/quejas':
-            var tipo = 'Queja';
-            break;
-        case '/dashboard/pqr/sugerencias':
-            var tipo = 'Sugerencia';
-            break;
-        case '/dashboard/pqr/felicitaciones':
-            var tipo = 'Felicitaciones';
-            break;
-        default:
-
-            break;
-    }
-
-    var html = '';
 
     // Iniciador de TEXAREA para contestar los correos
     CKEDITOR.replace("editor1",{
@@ -62,12 +29,47 @@ $(document).ready(function(){
     });
 
     // Peticion AJAX para listar la tabla de correos
+    switch (window.location.pathname) {
+        case '/dashboard/pqr/correos':
+            tipo = 'Correo';
+            tabla(tipo)
+            break;
+        case '/dashboard/pqr/reclamos':
+            tipo = 'Reclamo';
+            tabla(tipo)
+            break;
+        case '/dashboard/pqr/quejas':
+            tipo = 'Queja';
+            tabla(tipo)
+            break;
+        case '/dashboard/pqr/sugerencias':
+            tipo = 'Sugerencia';
+            tabla(tipo)
+            break;
+        case '/dashboard/pqr/felicitaciones':
+            tipo = 'Felicitaciones';
+            tabla(tipo)
+            break;
+        default:
+
+            break;
+    }
+
+});
+
+function tabla(tipo, texto) {
+
+    var html = '';
+    if (!texto) {
+        texto = 'Todos'
+    } 
+
     $.ajax({
-        url: '/dashboard/pqr/'+tipo,
+        url: '/dashboard/pqr/'+tipo+'/'+texto,
         type: 'POST',
-        data: { tipo:tipo },
+        data: { tipo:tipo, texto:texto },
         success: function (data) {
-             //console.log(Object.values(data.correos)[0].clasificacion)
+             console.log(Object.values(data))
             html = `
                     <div class="table-responsive mb-3">
                         <table class="table table-centered table-hover table-bordered mb-0">
@@ -76,7 +78,7 @@ $(document).ready(function(){
                             {
                              float: right; 
                             }
-                       </style>
+                        </style>
                             <thead>
                                 <tr>
                                     <th colspan="12" class="text-center">
@@ -117,28 +119,24 @@ $(document).ready(function(){
                                     {
                                         html +=
                                         `
-                                        <div class="d-inline-block icons-sm mr-2"><i class="fas fa-ad"></i></div>
+                                        <div class="d-inline-block icons-sm mr-2"><i class="far fa-laugh-wink"></i></div>
                                         <span class="header-title mt-2">Felicitaciones enviadas desde la página web</span>
                                         `
                                     }
                                   
-                                    `
+                                   html += `
                                     </th>
                                 </tr>
                                 <tr>
                                     <th colspan="12">
-                                        <div class="col-8 right mt-2">
-                                            <div class="input-group mb-3">
-                                                <input type="text" class="form-control" id="texto" placeholder="Ingrese nombre">
-                                                    <div class="input-group-append">
-                                                        <span class="input-group-text">Buscar</span>
-                                                    </div>
-                                            </div> 
-                                        </div>
+                                        
+                                        
+                                            
+                                        
                                     </th>
                                 </tr>
                                 <tr>
-                                    <th scope="col">#</th>
+                                    <th scope="col">N°</th>
                                     <th scope="col">Nombre</th>
                                     <th scope="col">Telefono</th>
                                     <th scope="col">Correo</th>
@@ -160,6 +158,7 @@ $(document).ready(function(){
                                         <td>${ correo.tel_cli_re }</td>
                                         <td>${ correo.correo_cli_re }</td>
                                         <td>${ correo.mensaje_reclamo }</td>
+                                        <td>${ correo.fecha_reclamo }</td>
                                         <td class="text-center">
                                             <button type="button" class="btn btn-outline-secondary btn-sm" onclick="verPQR(${correo.num_reclamo})" data-toggle="tooltip" data-placement="top" title="Ver Correo">
                                                 <i class="mdi mdi-eye"></i>
@@ -177,5 +176,9 @@ $(document).ready(function(){
             $('#tabla-correos').html(html);
         }
     });
+}
 
-});
+function onKey() {
+    var texto = $('#texto').val();
+    tabla(this.tipo, texto)
+};

@@ -53,6 +53,14 @@
                     <div class="col-xl-12">
                         <div class="card">
                             <div class="card-body">
+                            <div class="col-12 center mt-2">
+                                                <div class="input-group mb-3">
+                                                    <input type="text" class="form-control" onkeydown="onKey();" id="texto" placeholder="Ingrese nombre">
+                                                        <div class="input-group-append">
+                                                            <span class="input-group-text">Buscar</span>
+                                                        </div>
+                                                </div> 
+                                            </div>
                                 <div class="row p-5" id="tabla-correos">
                                     
                                     {{-- {{ $correos->links() }} --}}

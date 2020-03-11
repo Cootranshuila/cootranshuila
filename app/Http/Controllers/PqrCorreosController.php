@@ -13,44 +13,23 @@ class PqrCorreosController extends Controller
         return view('dashboard.pqr.correos');
     }
 
-    public function reclamos()
+    public function tabla($tipo, $texto)
     {
-        $reclamos = Correo::paginate(10);
-        return view('dashboard.pqr.reclamos', ['reclamos' => $reclamos]);
-    }
-
-    public function sugerencia()
-    {
-        $reclamos = Correo::paginate(10);
-        return view('dashboard.pqr.sugerencias', ['reclamos' => $reclamos]);
-    }
-
-    public function quejas()
-    {
-        $reclamos = Correo::paginate(10);
-        return view('dashboard.pqr.quejas', ['reclamos' => $reclamos]);
-    }
-
-    public function felicitaciones()
-    {
-        $reclamos = Correo::paginate(10);
-        return view('dashboard.pqr.felicitaciones', ['reclamos' => $reclamos]);
-    }
-
-    public function tabla($tipo)
-    {
-        $correos = Correo::all()->where('clasificacion', $tipo);
-        return ['correos' => $correos];
-    }
-
-    
-
-    public function buscador(Request $request)
-    {
-        $nombre=Correo::where("nombre_usu","like", $request->text."%")->take(5)->get();
-        return view('dashboard.pqr.reclamos', ['reclamos' => $reclamos]);
+        if ($texto != "Todos") {
+            $correos = Correo::where([ ['clasificacion', $tipo], ["nom_cli_re","like", $texto."%"] ])->get();
+            return ['correos' => $correos];
+        } else {
+            $correos = Correo::where('clasificacion', $tipo)->get();
+            return ['correos' => $correos];
+        }
     }
     
+    public function show($id)
+    {
+        $correo = Correo::findOrFail($id);
+        return ['correo' => $correo];
+    }
+
     public function create()
     {
         //
@@ -63,11 +42,7 @@ class PqrCorreosController extends Controller
     }
 
     
-    public function show($id)
-    {
-        $correo = Correo::findOrFail($id);
-        return ['correo' => $correo];
-    }
+   
 
     
     public function edit($id)
