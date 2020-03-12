@@ -4,15 +4,40 @@ $.ajaxSetup({
     }
 });
 
+
+//Peticion para mostrar ventana Modal
 function verPQR(id) {
     console.log(id);
     $.ajax({
         url: '/dashboard/pqr/'+id,
         type: 'GET',
         success: function (data) {
-            $("#modal-blade").modal('show');
-            $('#modal-blade-title').text('Correo N° '+data.correo.num_reclamo);
-            $('#modal-blade-body').text('Nombre: '+data.correo.nom_cli_re+' Teléfono: '+data.correo.tel_cli_re)
+            if(data.correo.clasificacion=="Correo"){
+                $("#modal-blade").modal('show');
+                $('#modal-blade-title').text('Correo N° '+data.correo.num_reclamo);
+            }
+            else if(data.correo.clasificacion=="Reclamo"){
+                $("#modal-blade").modal('show');
+                $('#modal-blade-title').text('Reclamo N° '+data.correo.num_reclamo);
+            }
+            else if(data.correo.clasificacion=="Queja"){
+                $("#modal-blade").modal('show');
+                $('#modal-blade-title').text('Queja N° '+data.correo.num_reclamo);
+            }
+            else if(data.correo.clasificacion=="Sugerencia"){
+                $("#modal-blade").modal('show');
+                $('#modal-blade-title').text('Sugerencia N° '+data.correo.num_reclamo);
+            }
+            else{
+                $("#modal-blade").modal('show');
+                $('#modal-blade-title').text('Felicitación N° '+data.correo.num_reclamo);
+            }
+            $('.modal-body #nombre').val(data.correo.nom_cli_re);
+            $('.modal-body #fecha').val(data.correo.fecha_reclamo);
+            $('.modal-body #correo').val(data.correo.correo_cli_re);
+            $('.modal-body #telefono').val(data.correo.tel_cli_re);
+            $('.modal-body #direccion').val(data.correo.dir_cli_re);
+            $('.modal-body #mensaje').val(data.correo.mensaje_reclamo);
           
         }
     });
@@ -25,7 +50,7 @@ $(document).ready(function(){
 
     // Iniciador de TEXAREA para contestar los correos
     CKEDITOR.replace("editor1",{
-        height:"200px"
+        height:"100px"
     });
 
     // Peticion AJAX para listar la tabla de correos
@@ -74,9 +99,11 @@ function tabla(tipo, texto) {
                     <div class="table-responsive mb-3">
                         <table class="table table-centered table-hover table-bordered mb-0">
                         <style>
-                            .right
-                            {
-                             float: right; 
+                            .main{
+                                white-space: nowrap;
+                                width: 200px;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
                             }
                         </style>
                             <thead>
@@ -128,20 +155,11 @@ function tabla(tipo, texto) {
                                     </th>
                                 </tr>
                                 <tr>
-                                    <th colspan="12">
-                                        
-                                        
-                                            
-                                        
-                                    </th>
-                                </tr>
-                                <tr>
                                     <th scope="col">N°</th>
                                     <th scope="col">Nombre</th>
                                     <th scope="col">Telefono</th>
                                     <th scope="col">Correo</th>
                                     <th scope="col">Mensaje</th>
-                                    <th scope="col" width="120px">Fecha</th>
                                     <th scope="col">Acciones</th>
                                 </tr>
                             </thead>
@@ -154,11 +172,10 @@ function tabla(tipo, texto) {
                                         <th scope="row">
                                             <a href="#">${ correo.num_reclamo }</a>
                                         </th>
-                                        <td>${ correo.nom_cli_re }</td>
+                                        <td><p class="main">${ correo.nom_cli_re }</p></td>
                                         <td>${ correo.tel_cli_re }</td>
-                                        <td>${ correo.correo_cli_re }</td>
-                                        <td>${ correo.mensaje_reclamo }</td>
-                                        <td>${ correo.fecha_reclamo }</td>
+                                        <td><p class="main">${ correo.correo_cli_re }</p></td>
+                                        <td><p class="main">${ correo.mensaje_reclamo }</p></td>
                                         <td class="text-center">
                                             <button type="button" class="btn btn-outline-secondary btn-sm" onclick="verPQR(${correo.num_reclamo})" data-toggle="tooltip" data-placement="top" title="Ver Correo">
                                                 <i class="mdi mdi-eye"></i>

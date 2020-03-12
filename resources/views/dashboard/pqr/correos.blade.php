@@ -57,7 +57,7 @@
                                                 <div class="input-group mb-3">
                                                     <input type="text" class="form-control" onkeydown="onKey();" id="texto" placeholder="Ingrese nombre">
                                                         <div class="input-group-append">
-                                                            <span class="input-group-text">Buscar</span>
+                                                            <span class="input-group-text">Buscar datos</span>
                                                         </div>
                                                 </div> 
                                             </div>
