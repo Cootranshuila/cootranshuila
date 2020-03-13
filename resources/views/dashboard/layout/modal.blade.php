@@ -1,10 +1,11 @@
 <style type="text/css">
   .estilo {
         height:75px;
+        
      }
 
     .estilo2 {
-        height:45px;
+        height:40px;
      }
   </style>
 <div class="modal fade  " id="modal-blade" tabindex="-1" role="dialog" aria-labelledby="modal-blade-title" aria-hidden="true">
@@ -41,16 +42,17 @@
                         <input type="text" class="form-control" id="direccion"  required maxlength="45">
                     </div>
                 </div>
-                
                 <div class="form-group">
                     <label for="nombre" class="control-label">Mensaje:</label>
-                    <textarea type="text" class="form-control" id="mensaje" height="20px" ></textarea>
+                    <textarea type="text" class="form-control" id="mensaje" rows="4" ></textarea>
                 </div>
                 <h5 class="text-center">Respuesta</h5>
                 <textarea name="editor1" id="editor1"></textarea>
+            </div> 
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
             </div>
-            
-            
         </div>
     </div>
 </div>

@@ -4,7 +4,6 @@ $.ajaxSetup({
     }
 });
 
-
 //Peticion para mostrar ventana Modal
 function verPQR(id) {
     console.log(id);
@@ -44,6 +43,22 @@ function verPQR(id) {
     return false;
 }
 
+
+$(document).on('click','.pagination a', function(e){
+    e.preventDefault();
+    var page =$(this).attr('href').split('page=')[1];
+    //console.log(page);
+    $.ajax({
+        url: '/dashboard/pqr/',
+        data:{page:page},
+        type: 'GET',
+        dataType:'json',
+        success:function(data){
+            //console.log(data);
+            $('#tabla-correos').html(data);
+        }
+    });
+});
 var tipo;
 
 $(document).ready(function(){
@@ -94,7 +109,7 @@ function tabla(tipo, texto) {
         type: 'POST',
         data: { tipo:tipo, texto:texto },
         success: function (data) {
-             console.log(Object.values(data))
+             console.log(data.correos.data)
             html = `
                     <div class="table-responsive mb-3">
                         <table class="table table-centered table-hover table-bordered mb-0">
@@ -165,7 +180,7 @@ function tabla(tipo, texto) {
                             </thead>
                             <tbody>
                             `
-                            Object.values(data.correos).forEach(correo => {
+                            data.correos.data.forEach(correo => {
                                 //console.log(correo.correo_cli_re);
                                 html += `
                                     <tr>
@@ -187,7 +202,18 @@ function tabla(tipo, texto) {
                             html += `        
                             </tbody>
                         </table>
+
+                        
                     </div>
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                            <li class="page-item"><a class="page-link" href="http://127.0.0.1:8000/dashboard/pqr/correos?page=1">1</a></li>
+                            <li class="page-item"><a class="page-link" href="http://127.0.0.1:8000/dashboard/pqr/correos?page=2">2</a></li>
+                            <li class="page-item"><a class="page-link" href="http://127.0.0.1:8000/dashboard/pqr/correos?page=3">3</a></li>
+                            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                        </ul>
+                    </nav>
                 `;
                             
             $('#tabla-correos').html(html);

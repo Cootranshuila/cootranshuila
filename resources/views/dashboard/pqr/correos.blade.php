@@ -61,10 +61,18 @@
                                                         </div>
                                                 </div> 
                                             </div>
-                                <div class="row p-5" id="tabla-correos">
-                                    
-                                    {{-- {{ $correos->links() }} --}}
+                                <div class="row p-5 d-flex justify-content-center" id="tabla-correos">    
+                                        <div class="spinner-grow text-dark" role="status">
+                                            <span class="sr-only">Loading...</span>
+                                        </div>
+                                        <div class="spinner-grow text-dark" role="status">
+                                            <span class="sr-only">Loading...</span>
+                                        </div>
+                                        <div class="spinner-grow text-dark" role="status">
+                                            <span class="sr-only">Loading...</span>
+                                        </div> 
                                 </div>
+                                
                             </div>
                         </div>
                     </div>
