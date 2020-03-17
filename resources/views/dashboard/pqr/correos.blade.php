@@ -74,6 +74,10 @@
                                 </div>
                                 
                             </div>
+                            <nav aria-label="Page navigation example">
+                               
+                            </nav>
+                            
                         </div>
                     </div>
 

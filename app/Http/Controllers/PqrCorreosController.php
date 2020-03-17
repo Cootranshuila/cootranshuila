@@ -20,22 +20,25 @@ class PqrCorreosController extends Controller
     {
         if ($texto != "Todos") 
         {
-            $correos = Correo::where([ ['clasificacion', $tipo], ["nom_cli_re","like", $texto."%"] ])->paginate(10);
+            $correos = Correo::where([ ['clasificacion', $tipo], ["nom_cli_re","like", $texto."%"] ])->take(5)->get();
             return ['correos' => $correos];
         } 
         else 
         {
-            $correos = Correo::where('clasificacion', $tipo)->paginate(10);
+            $correos = Correo::where('clasificacion', $tipo)->take(5)->get();
             return ['correos' => $correos];
         }
     }
 
-    public function paginacion(Request $request)
+    public function paginacion(Request $request, $tipo)
     {
-        $correos = Correo::paginate(2);
-        if($request->ajax()){
-            return response()->json(['correos' => $correos]);
-        }
+        $correos = Correo::where('clasificacion', $tipo)->paginate(5);
+            if($request->ajax()){
+                return response()->json(['correos' => $correos]);
+            }
+             else{
+                return response()->json(['correos' => $correos]);
+             }   
     }
     
     public function show($id)
