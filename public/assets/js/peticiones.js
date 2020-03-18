@@ -2,16 +2,17 @@ $.ajaxSetup({
     headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     }
+    
 });
 
 //Peticion para mostrar ventana Modal
 function verPQR(id) {
-    console.log(id);
+    //console.log(id);
     $.ajax({
         url: '/dashboard/pqr/'+id,
         type: 'GET',
         success: function (data) {
-            console.log(data.correo.clasificacion)
+            //console.log(data.correo.clasificacion)
             if(data.correo.clasificacion=="Correo"){
                 $("#modal-blade").modal('show');
                 $('#modal-blade-title').text('Correo N° '+data.correo.num_reclamo);
@@ -44,7 +45,9 @@ function verPQR(id) {
     return false;
 }
 
+var tipobusqueda;
 var tipo;
+var html = '';
 
 $(document).ready(function(){
 
@@ -58,36 +61,163 @@ $(document).ready(function(){
         case '/dashboard/pqr/correos':
             tipo = 'Correo';
             tabla(tipo)
-            paginacion(tipo)
+            
             break;
         case '/dashboard/pqr/reclamos':
             tipo = 'Reclamo';
             tabla(tipo)
-            paginacion(tipo)
+            
             break;
         case '/dashboard/pqr/quejas':
             tipo = 'Queja';
             tabla(tipo)
-            paginacion(tipo)
+            
             break;
         case '/dashboard/pqr/sugerencias':
             tipo = 'Sugerencia';
             tabla(tipo)
-            paginacion(tipo)
+            
             break;
         case '/dashboard/pqr/felicitaciones':
             tipo = 'Felicitaciones';
             tabla(tipo)
-            paginacion(tipo)
+            
             break;
         default:
 
             break;
     }
 
-
-
 });
+
+    $(document).on('click','.pagination a', function(e){
+        e.preventDefault();
+        var page =$(this).attr('href').split('page=')[1];
+        $.ajax({
+            url: '/dashboard/pqr/paginacion/'+tipo,
+            data:{page:page},
+            type: 'GET',
+            dataType:'json',
+            success: function (data){
+                //console.log(data)
+                //console.log(data)
+                //console.log(data.correos.data[0].num_reclamo)
+                html = `
+                <div class="table-responsive mb-3">
+                    <table class="table table-centered table-hover table-bordered mb-0">
+                    <style>
+                        .main{
+                            white-space: nowrap;
+                            width: 200px;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                        }
+                    </style>
+                        <thead>
+                            <tr>
+                                <th colspan="12" class="text-center">
+                                `
+                                if(data.correos.data[0].clasificacion=="Correo")
+                                {
+                                    html +=
+                                    `
+                                    <div class="d-inline-block icons-sm mr-2"><i class="fas fa-envelope-open-text"></i></div>
+                                    <span class="header-title mt-2">Correos enviados desde la página web</span>
+                                    `
+                                }
+                                else if(data.correos.data[0].clasificacion=="Reclamo")
+                                {
+                                    html +=
+                                    `
+                                    <div class="d-inline-block icons-sm mr-2"><i class="far fa-angry"></i></div>
+                                    <span class="header-title mt-2">Reclamos enviados desde la página web</span>
+                                    `
+                                }
+                                else if(data.correos.data[0].clasificacion=="Queja")
+                                {
+                                    html +=
+                                    `
+                                    <div class="d-inline-block icons-sm mr-2"><i class="far fa-tired"></i></div>
+                                    <span class="header-title mt-2">Quejas enviadas desde la página web</span>
+                                    `
+                                }
+                                else if(data.correos.data[0].clasificacion=="Sugerencia")
+                                {
+                                    html +=
+                                    `
+                                    <div class="d-inline-block icons-sm mr-2"><i class="fas fa-ad"></i></div>
+                                    <span class="header-title mt-2">Sugerencias enviadas desde la página web</span>
+                                    `
+                                }
+                                else if(data.correos.data[0].clasificacion=="Felicitaciones")
+                                {
+                                    html +=
+                                    `
+                                    <div class="d-inline-block icons-sm mr-2"><i class="far fa-laugh-wink"></i></div>
+                                    <span class="header-title mt-2">Felicitaciones enviadas desde la página web</span>
+                                    `
+                                }
+                              
+                               html += `
+                                </th>
+                            </tr>
+                            <tr>
+                                <th scope="col">N°</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Telefono</th>
+                                <th scope="col">Correo</th>
+                                <th scope="col">Mensaje</th>
+                                <th scope="col">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        `
+                        data.correos.data.forEach(correo => {
+                            //console.log(correo.correo_cli_re);
+                            //console.log(Object.values(data.correos));
+                            html += `
+                                <tr>
+                                    <th scope="row">
+                                        <a href="#">${ correo.num_reclamo }</a>
+                                    </th>
+                                    <td><p class="main">${ correo.nom_cli_re }</p></td>
+                                    <td>${ correo.tel_cli_re }</td>
+                                    <td><p class="main">${ correo.correo_cli_re }</p></td>
+                                    <td><p class="main">${ correo.mensaje_reclamo }</p></td>
+                                    <td class="text-center">
+                                        <button type="button" class="btn btn-outline-secondary btn-sm" onclick="verPQR(${correo.num_reclamo})" data-toggle="tooltip" data-placement="top" title="Ver Correo">
+                                            <i class="mdi mdi-eye"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            `
+                        });
+                        html += `        
+                        </tbody>
+                    </table> 
+                </div>
+                <ul class="pagination d-flex justify-content-center">
+                    <li class="page-item"><a class="page-link" href="#"> << </a></li>
+                    `
+                    for(var i=0; i<data.correos.data[i]; i++)
+                    {
+                        html +=
+
+                    `
+                    <li class="page-item"><a class="page-link" href="http://127.0.0.1:8000/dashboard/pqr/${ data.correos.data[0].clasificacion }?page=${i+1}" >${i+1}</a></li>
+                    `
+                        
+                    }
+                    html +=
+                    `
+                    <li class="page-item"><a class="page-link" href="#"> >> </a></li>
+                </ul>
+            `;
+                        
+        $('#tabla-correos').html(html);
+            }
+        });
+    });
 
 function tabla(tipo, texto) {
 
@@ -102,7 +232,8 @@ function tabla(tipo, texto) {
         data: { tipo:tipo, texto:texto },
         success: function (data) {
              //console.log(data.correos.data.clasificacion=="Correo")
-             console.log(Object.values(data.correos)[0].clasificacion)
+             //alert("Karolay te quiero 3 millones");
+            //console.log(data.correos.data[0].correos)
             html = `
                     <div class="table-responsive mb-3">
                         <table class="table table-centered table-hover table-bordered mb-0">
@@ -118,7 +249,7 @@ function tabla(tipo, texto) {
                                 <tr>
                                     <th colspan="12" class="text-center">
                                     `
-                                    if(Object.values(data.correos)[0].clasificacion=="Correo")
+                                    if(data.correos.data[0].clasificacion=="Correo")
                                     {
                                         html +=
                                         `
@@ -126,7 +257,7 @@ function tabla(tipo, texto) {
                                         <span class="header-title mt-2">Correos enviados desde la página web</span>
                                         `
                                     }
-                                    else if(Object.values(data.correos)[0].clasificacion=="Reclamo")
+                                    else if(data.correos.data[0].clasificacion=="Reclamo")
                                     {
                                         html +=
                                         `
@@ -134,7 +265,7 @@ function tabla(tipo, texto) {
                                         <span class="header-title mt-2">Reclamos enviados desde la página web</span>
                                         `
                                     }
-                                    else if(Object.values(data.correos)[0].clasificacion=="Queja")
+                                    else if(data.correos.data[0].clasificacion=="Queja")
                                     {
                                         html +=
                                         `
@@ -142,7 +273,7 @@ function tabla(tipo, texto) {
                                         <span class="header-title mt-2">Quejas enviadas desde la página web</span>
                                         `
                                     }
-                                    else if(Object.values(data.correos)[0].clasificacion=="Sugerencia")
+                                    else if(data.correos.data[0].clasificacion=="Sugerencia")
                                     {
                                         html +=
                                         `
@@ -150,7 +281,7 @@ function tabla(tipo, texto) {
                                         <span class="header-title mt-2">Sugerencias enviadas desde la página web</span>
                                         `
                                     }
-                                    else if(Object.values(data.correos)[0].clasificacion=="Felicitaciones")
+                                    else if(data.correos.data[0].clasificacion=="Felicitaciones")
                                     {
                                         html +=
                                         `
@@ -173,8 +304,9 @@ function tabla(tipo, texto) {
                             </thead>
                             <tbody>
                             `
-                            Object.values(data.correos).forEach(correo => {
+                            data.correos.data.forEach(correo => {
                                 //console.log(correo.correo_cli_re);
+                                //console.log(data);
                                 //console.log(Object.values(data.correos));
                                 html += `
                                     <tr>
@@ -197,12 +329,28 @@ function tabla(tipo, texto) {
                             </tbody>
                         </table> 
                     </div>
-                    <ul class="pagination d-flex justify-content-center">
-                        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                        <li class="page-item"><a class="page-link" href="http://127.0.0.1:8000/dashboard/pqr/${ Object.values(data.correos)[0].clasificacion }?page=1" >1</a></li>
-                        <li class="page-item"><a class="page-link" href="http://127.0.0.1:8000/dashboard/pqr/${ Object.values(data.correos)[0].clasificacion }?page=2" >2</a></li>
-                        <li class="page-item"><a class="page-link" href="http://127.0.0.1:8000/dashboard/pqr/${ Object.values(data.correos)[0].clasificacion }?page=3" >3</a></li>
-                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                    <ul class="pagination">
+                        <li class="page-item"><a class="page-link" href="#"> << </a></li>
+                        `
+                        for(var i=0; i<=5; i++)
+                        {
+                            var total= parseFloat (data[i]);
+                             console.log(total);
+                        }
+                        for(i=0; i<=total; i++)
+                        {
+                            console.log(total);
+                            html +=
+                            `
+                            <li class="page-item"><a class="page-link" href="http://127.0.0.1:8000/dashboard/pqr/${ data.correos.data[0].clasificacion }?page=${i+1}" >${i+1}</a></li>
+                            ` 
+                        }
+
+                       
+                        html +=
+                        `
+
+                        <li class="page-item"><a class="page-link" href="#"> >> </a></li>
                     </ul>
                 `;
                             
@@ -211,43 +359,6 @@ function tabla(tipo, texto) {
     });
 }
 
-function paginacion(tipo)
-{
-
-    var html = '';
-    $(document).on('click','.pagination a', function(e){
-        e.preventDefault();
-        var page =$(this).attr('href').split('page=')[1];
-        $.ajax({
-            url: '/dashboard/pqr/pagination/'+tipo,
-            data:{page:page},
-            type: 'GET',
-            dataType:'json',
-            success: function (data){
-                console.log(data)
-                //console.log(data.correos.data[0].num_reclamo)
-                data.correos.data.forEach(correo => {
-                    html += `
-                        <tr>
-                            <th scope="row">
-                                <a href="#">${ data.correos.data[0].num_reclamo }</a>
-                            </th>
-                            <td><p class="main">${ correo.nom_cli_re }</p></td>
-                            <td>${ correo.tel_cli_re }</td>
-                            <td><p class="main">${ correo.correo_cli_re }</p></td>
-                            <td><p class="main">${ correo.mensaje_reclamo }</p></td>
-                            <td class="text-center">
-                                <button type="button" class="btn btn-outline-secondary btn-sm" onclick="verPQR(${correo.num_reclamo})" data-toggle="tooltip" data-placement="top" title="Ver Correo">
-                                    <i class="mdi mdi-eye"></i>
-                                </button>
-                            </td>
-                        </tr>
-                    `
-                });  
-            }
-        });
-    }); 
-}
 
 function onKey() {
     var texto = $('#texto').val();

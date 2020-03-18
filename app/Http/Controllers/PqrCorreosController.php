@@ -18,14 +18,15 @@ class PqrCorreosController extends Controller
 
     public function tabla( $tipo, $texto)
     {
+        
         if ($texto != "Todos") 
         {
-            $correos = Correo::where([ ['clasificacion', $tipo], ["nom_cli_re","like", $texto."%"] ])->take(5)->get();
-            return ['correos' => $correos];
+            $correos = Correo::where([ ['clasificacion', $tipo], ["nom_cli_re","like", $texto."%"] ] )->paginate(5);
+            return ['correos' => $correos];  
         } 
         else 
         {
-            $correos = Correo::where('clasificacion', $tipo)->take(5)->get();
+            $correos = Correo::where('clasificacion', $tipo)->paginate(5);
             return ['correos' => $correos];
         }
     }

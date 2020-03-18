@@ -69,6 +69,7 @@
         <script src="{{ asset('assets/js/clock.js') }}"></script>
         <script src="{{ asset('assets/js/peticiones.js') }}"></script>
         <script src="{{ asset('assets/js/app.js') }}"></script>
+        <script type="module" src="{{ asset('assets/js/app.js') }}"></script>
 
     </body>
 </html>

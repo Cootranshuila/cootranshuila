@@ -2,6 +2,7 @@
 
 @extends('dashboard.layout.modal')
 
+
 @section('title') Correos @endsection
 
 <div id="layout-wrapper">
@@ -74,10 +75,6 @@
                                 </div>
                                 
                             </div>
-                            <nav aria-label="Page navigation example">
-                               
-                            </nav>
-                            
                         </div>
                     </div>
 
