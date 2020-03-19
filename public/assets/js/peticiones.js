@@ -199,14 +199,18 @@ $(document).ready(function(){
                 <ul class="pagination d-flex justify-content-center">
                     <li class="page-item"><a class="page-link" href="#"> << </a></li>
                     `
-                    for(var i=0; i<data.correos.data[i]; i++)
+                    var totalItems= data.correos.data;
+                    for(const objeto in totalItems)
+                    {
+                        var total=parseInt(objeto);
+                    }
+                    console.log(total);
+                    for(var i=0; i<total; i++)
                     {
                         html +=
-
-                    `
-                    <li class="page-item"><a class="page-link" href="http://127.0.0.1:8000/dashboard/pqr/${ data.correos.data[0].clasificacion }?page=${i+1}" >${i+1}</a></li>
-                    `
-                        
+                        `
+                        <li class="page-item"><a class="page-link" href="http://127.0.0.1:8000/dashboard/pqr/${ data.correos.data[0].clasificacion }?page=${i+1}" >${i+1}</a></li>
+                        ` 
                     }
                     html +=
                     `
@@ -305,7 +309,7 @@ function tabla(tipo, texto) {
                             <tbody>
                             `
                             data.correos.data.forEach(correo => {
-                                //console.log(correo.correo_cli_re);
+                                //console.log(data.correos.data);
                                 //console.log(data);
                                 //console.log(Object.values(data.correos));
                                 html += `
@@ -332,24 +336,21 @@ function tabla(tipo, texto) {
                     <ul class="pagination">
                         <li class="page-item"><a class="page-link" href="#"> << </a></li>
                         `
-                        for(var i=0; i<=5; i++)
+                        var totalItems= data.correos.data;
+                        for(const objeto in totalItems)
                         {
-                            var total= parseFloat (data[i]);
-                             console.log(total);
+                            var total=parseInt(objeto);
                         }
-                        for(i=0; i<=total; i++)
+                        //console.log(total);
+                        for(var i=0; i<total; i++)
                         {
-                            console.log(total);
                             html +=
                             `
                             <li class="page-item"><a class="page-link" href="http://127.0.0.1:8000/dashboard/pqr/${ data.correos.data[0].clasificacion }?page=${i+1}" >${i+1}</a></li>
                             ` 
                         }
-
-                       
                         html +=
                         `
-
                         <li class="page-item"><a class="page-link" href="#"> >> </a></li>
                     </ul>
                 `;
