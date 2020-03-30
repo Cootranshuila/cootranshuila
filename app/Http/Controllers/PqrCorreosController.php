@@ -37,9 +37,9 @@ class PqrCorreosController extends Controller
             if($request->ajax()){
                 return response()->json(['correos' => $correos]);
             }
-             else{
-                return response()->json(['correos' => $correos]);
-             }   
+            else{
+            return response()->json(['correos' => $correos]);
+            }   
     }
     
     public function show($id)

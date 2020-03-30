@@ -94,14 +94,11 @@ $(document).ready(function(){
         e.preventDefault();
         var page =$(this).attr('href').split('page=')[1];
         $.ajax({
-            url: '/dashboard/pqr/paginacion/'+tipo,
+           url: '/dashboard/pqr/paginacion/'+tipo,
             data:{page:page},
             type: 'GET',
             dataType:'json',
             success: function (data){
-                //console.log(data)
-                //console.log(data)
-                //console.log(data.correos.data[0].num_reclamo)
                 html = `
                 <div class="table-responsive mb-3">
                     <table class="table table-centered table-hover table-bordered mb-0">
@@ -157,8 +154,8 @@ $(document).ready(function(){
                                     <span class="header-title mt-2">Felicitaciones enviadas desde la página web</span>
                                     `
                                 }
-                              
-                               html += `
+                                
+                                html += `
                                 </th>
                             </tr>
                             <tr>
@@ -173,8 +170,6 @@ $(document).ready(function(){
                         <tbody>
                         `
                         data.correos.data.forEach(correo => {
-                            //console.log(correo.correo_cli_re);
-                            //console.log(Object.values(data.correos));
                             html += `
                                 <tr>
                                     <th scope="row">
@@ -196,29 +191,42 @@ $(document).ready(function(){
                         </tbody>
                     </table> 
                 </div>
-                <ul class="pagination d-flex justify-content-center">
-                    <li class="page-item"><a class="page-link" href="#"> << </a></li>
-                    `
-                    var totalItems= data.correos.data;
-                    for(const objeto in totalItems)
-                    {
-                        var total=parseInt(objeto);
-                    }
-                    console.log(total);
-                    for(var i=0; i<total; i++)
-                    {
-                        html +=
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                        <li class="anterior"><a class="page-link" href="page=${b}" onclick="myFunction()"> << </a></li>
                         `
-                        <li class="page-item"><a class="page-link" href="http://127.0.0.1:8000/dashboard/pqr/${ data.correos.data[0].clasificacion }?page=${i+1}" >${i+1}</a></li>
-                        ` 
-                    }
-                    html +=
-                    `
-                    <li class="page-item"><a class="page-link" href="#"> >> </a></li>
-                </ul>
-            `;
-                        
-        $('#tabla-correos').html(html);
+                            var totalItems= data.correos.data;
+                            for(const objeto in totalItems)
+                            {
+                                var total= objeto;
+                                var Tfin=parseInt(total);
+                                
+                            }
+                            //console.log(Tfin);
+                            if(Tfin>=3)
+                            {
+                                for(var i=0; i<=Tfin; i++)
+                                {
+                                    html +=
+                                    `
+                                    <li class="page-item"><a class="page-link" href="http://127.0.0.1:8000/dashboard/pqr/${ data.correos.data[0].clasificacion }?page=${i+1}" >${i+1}</a></li>
+                                    ` 
+                                }
+                            }
+                            else
+                            {
+                                html +=
+                                `
+                                <li class="page-item"><a class="page-link" href="http://127.0.0.1:8000/dashboard/pqr/${ data.correos.data[0].clasificacion }?page=1" >1</a></li>
+                                ` 
+                            }
+                            html +=
+                            `
+                            <li class="siguiente"><a class="page-link" href="page=${a}" onclick="myFunction()"> >> </a></li>                
+                    </ul>
+                </nav>
+                `;         
+                $('#tabla-correos').html(html);
             }
         });
     });
@@ -235,9 +243,6 @@ function tabla(tipo, texto) {
         type: 'POST',
         data: { tipo:tipo, texto:texto },
         success: function (data) {
-             //console.log(data.correos.data.clasificacion=="Correo")
-             //alert("Karolay te quiero 3 millones");
-            //console.log(data.correos.data[0].correos)
             html = `
                     <div class="table-responsive mb-3">
                         <table class="table table-centered table-hover table-bordered mb-0">
@@ -309,9 +314,6 @@ function tabla(tipo, texto) {
                             <tbody>
                             `
                             data.correos.data.forEach(correo => {
-                                //console.log(data.correos.data);
-                                //console.log(data);
-                                //console.log(Object.values(data.correos));
                                 html += `
                                     <tr>
                                         <th scope="row">
@@ -333,33 +335,73 @@ function tabla(tipo, texto) {
                             </tbody>
                         </table> 
                     </div>
-                    <ul class="pagination">
-                        <li class="page-item"><a class="page-link" href="#"> << </a></li>
-                        `
-                        var totalItems= data.correos.data;
-                        for(const objeto in totalItems)
-                        {
-                            var total=parseInt(objeto);
-                        }
-                        //console.log(total);
-                        for(var i=0; i<total; i++)
-                        {
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            <li class="anterior"><a class="page-link" href="page=${b}" onclick="myFunction()"> << </a></li>
+                            `
+                            var totalItems= data.correos.data;
+                            for(const objeto in totalItems)
+                            {
+                                var total= objeto;
+                                var Tfin=parseInt(total);
+                               
+                            }
+                            //console.log(Tfin);
+                            if(Tfin>=3)
+                            {
+                                for(var i=0; i<=Tfin; i++)
+                                {
+                                    html +=
+                                    `
+                                    <li class="page-item"><a class="page-link" href="http://127.0.0.1:8000/dashboard/pqr/${ data.correos.data[0].clasificacion }?page=${i+1}" >${i+1}</a></li>
+                                    ` 
+                                }
+                            }
+                            else
+                            {
+                                html +=
+                                `
+                                <li class="page-item"><a class="page-link" href="http://127.0.0.1:8000/dashboard/pqr/${ data.correos.data[0].clasificacion }?page=1" >1</a></li>
+                                ` 
+                            }
                             html +=
                             `
-                            <li class="page-item"><a class="page-link" href="http://127.0.0.1:8000/dashboard/pqr/${ data.correos.data[0].clasificacion }?page=${i+1}" >${i+1}</a></li>
-                            ` 
-                        }
-                        html +=
-                        `
-                        <li class="page-item"><a class="page-link" href="#"> >> </a></li>
-                    </ul>
-                `;
-                            
+                            <li class="siguiente"><a class="page-link" href="page=${a}" onclick="myFunction()"> >> </a></li> 
+                        </ul>
+                    </nav>
+                `;         
             $('#tabla-correos').html(html);
         }
     });
 }
 
+var a=2;
+var b=0;
+function myFunction() {
+    $(".siguiente").click(function () {
+        if(a)
+        {
+            a = a + 1;
+            //console.log(a);
+            if(a==6)
+            {
+                a=5;
+                b = a-1;
+            }  
+        }
+    });
+    $(".anterior").click(function () {
+        if(b)
+        {
+            b = b - 1;
+            //console.log(b);
+            if(b==0)
+            {
+                a=2;
+            }  
+        }
+    }); 
+}
 
 function onKey() {
     var texto = $('#texto').val();
